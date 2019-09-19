@@ -1,0 +1,94 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+apply plugin: 'io.spring.dependency-management'
+group = 'com.p2p'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    maven { url "http://repo.spring.io/release" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "http://repo.spring.io/snapshot" }
+    mavenCentral()
+}
+
+dependencies {
+//dataBase
+    //driver
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    implementation group: 'org.springframework.boot',name:'spring-boot-starter-jdbc'
+    //orm
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
+    // mybatis二级缓存 start
+    implementation group: 'org.mybatis.caches', name: 'mybatis-ehcache', version: '1.1.0'
+    implementation group: 'com.google.code.simple-spring-memcached', name: 'xmemcached-provider', version: '3.1.0'
+    implementation group: 'com.google.code.simple-spring-memcached', name: 'spymemcached-provider', version: '3.1.0'
+    // 定时调度器
+    implementation group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.3'
+    implementation group: 'org.ehcache.modules', name: 'ehcache-core', version: '3.3.0'
+    implementation group: 'quartz', name: 'quartz-jboss', version: '1.5.1'
+    implementation group: 'org.springframework', name: 'spring-context-support', version: '5.1.9.RELEASE'
+
+    // hjy POI 操作csv文件
+    implementation group: 'com.github.virtuald', name: 'curvesapi', version: '1.03'
+    implementation group: 'net.sf.opencsv', name: 'opencsv', version: '2.3'
+    implementation group: 'org.apache.poi', name: 'poi', version: '3.14'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.14'
+    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '2.6.0'
+
+    // hjy
+    implementation group: 'org.apache.shiro', name: 'shiro-spring', version: '1.2.3'
+
+    // 分页插件
+    //Mybatis 通用 Mapper
+    implementation group: 'com.github.pagehelper', name: 'pagehelper', version: '4.1.6'
+    implementation group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.2.4'
+    implementation group: 'tk.mybatis', name: 'mapper', version: '3.3.7'
+
+
+    //api
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    //server
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    //web
+    implementation ('org.springframework.boot:spring-boot-starter-web' ){
+        exclude module: 'spring-boot-starter-logging'
+    }
+    //jsp_support
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.24'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    implementation group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.2.1'
+    // JSTL标签类
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
+
+    // 日志文件管理包
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starer-log4j2'
+    // 格式化对象，方便输出日志
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.1.41'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.7'
+    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.7'
+    // 映射JSON
+    implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+    // 上传组件包
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    implementation group: 'commons-codec', name: 'commons-codec', version: '1.9'
+    implementation group: 'org.apache.activemq', name: 'activemq-core', version: '5.7.0'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+
+}
