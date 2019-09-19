@@ -4,8 +4,14 @@ spring:
   datasource:
     url: jdbc:mysql://47.102.131.233:3306/credit
     driverClassName: com.mysql.cj.jdbc.Driver
-    username: student
-    password: Pass.123
+    username: root
+    password: ShiYuzhu.18
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+    pathmatch:
+      use-suffix-pattern: true
 mybatis:
   mapper-locations:   classpath:/mapping/*.xml
   config-location:  classpath:/mybatis-config.xml
