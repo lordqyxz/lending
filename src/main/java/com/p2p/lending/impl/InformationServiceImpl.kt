@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.InfromationDao
+import com.p2p.lending.repository.InfromationDao
 import com.p2p.lending.entity.Approveitem
 import com.p2p.lending.entity.Certifrecord
 import com.p2p.lending.entity.Users

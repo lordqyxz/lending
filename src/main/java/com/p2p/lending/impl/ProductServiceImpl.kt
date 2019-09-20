@@ -1,7 +1,7 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.DetailsDao
-import com.p2p.lending.dao.ProductDao
+import com.p2p.lending.repository.DetailsDao
+import com.p2p.lending.repository.ProductDao
 import com.p2p.lending.entity.Product
 import com.p2p.lending.service.ProductService
 import com.p2p.lending.util.TimeCompare

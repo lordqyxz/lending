@@ -231,7 +231,7 @@ public class InformationController {
         int totalpage = 0;// 总页数
         int totalrow = 0;// 总行数
         Poundage poundage = new Poundage();
-        List<Poundage> list = poundageService.findList(BeanUtils.toMap(poundage));
+        List<Poundage> list = poundageService.findList(BeanUtils.INSTANCE.toMap(poundage));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);

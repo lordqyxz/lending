@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.p2p.lending.dao.UserauditorDao">
+<mapper namespace="com.p2p.lending.repository.UserauditorDao">
   	<resultMap type="com.p2p.lending.entity.Userauditor" id="BaseresultMap">
   		<id column="uaid" property="uaid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
   		<result column="userid" property="userid" javaType="java.lang.Integer" jdbcType="INTEGER"/>

@@ -45,7 +45,7 @@ public class ProductController {
             product = service.get(params.getId());
         }
         model.addAttribute("domain", product);
-        List<Biao> list3 = biaoService.findList(BeanUtils.toMap(new Biao()));
+        List<Biao> list3 = biaoService.findList(BeanUtils.INSTANCE.toMap(new Biao()));
         model.addAttribute("blist", list3);
         return str + "bk_input_pro";
     }
@@ -58,7 +58,7 @@ public class ProductController {
         int totalpage = 0;// 总页数
         int totalrow = 0;// 总行数
         Product product = new Product();
-        List<Product> list = service.findList(BeanUtils.toMap(product));
+        List<Product> list = service.findList(BeanUtils.INSTANCE.toMap(product));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -83,7 +83,7 @@ public class ProductController {
             product.setPstate("2");
         }
 
-        List<Product> list2 = service.findList(BeanUtils.toMap(product));
+        List<Product> list2 = service.findList(BeanUtils.INSTANCE.toMap(product));
         // 更新进度
         service.updateProgres(list2);
         // 更新状态
@@ -106,7 +106,7 @@ public class ProductController {
         int totalrow = 0;// 总行数
         InvestInfo ii = new InvestInfo();
         ii.setBrrowid(Integer.parseInt(bid));
-        List<InvestInfo> list = InvestService.getDtail(BeanUtils.toMap(ii));
+        List<InvestInfo> list = InvestService.getDtail(BeanUtils.INSTANCE.toMap(ii));
         List<Users> ulist = usersService.userList();
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
@@ -126,7 +126,7 @@ public class ProductController {
         ii.setStartPage(startPage);
         ii.setPageSize(pagerow);
 
-        List<InvestInfo> list2 = InvestService.getDtail(BeanUtils.toMap(ii));
+        List<InvestInfo> list2 = InvestService.getDtail(BeanUtils.INSTANCE.toMap(ii));
         System.out.println(list2.size());
         // 更新进度
         // service.updateProgres(list2);
@@ -213,7 +213,7 @@ public class ProductController {
     public String detail(Model model, @RequestParam(value = "pid", required = true) String id) {
         InvestInfo info = new InvestInfo();
         info.setBrrowid(Integer.parseInt(id));
-        List<InvestInfo> list = InvestService.getDtail(BeanUtils.toMap(info));
+        List<InvestInfo> list = InvestService.getDtail(BeanUtils.INSTANCE.toMap(info));
         model.addAttribute("list", list);
         return str + "bk_pro_detail";
     }

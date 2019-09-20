@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.EmployeeDao
+import com.p2p.lending.repository.EmployeeDao
 import com.p2p.lending.entity.Employee
 import com.p2p.lending.service.EmployeeService
 import org.apache.ibatis.annotations.Param

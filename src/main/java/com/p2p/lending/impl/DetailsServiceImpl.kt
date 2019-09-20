@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.DetailsDao
+import com.p2p.lending.repository.DetailsDao
 import com.p2p.lending.entity.Details
 import com.p2p.lending.service.DetailsService
 import org.springframework.stereotype.Service

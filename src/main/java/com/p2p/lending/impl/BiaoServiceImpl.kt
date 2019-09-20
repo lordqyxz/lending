@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.BiaoMapperDao
+import com.p2p.lending.repository.BiaoMapperDao
 import com.p2p.lending.entity.Biao
 import com.p2p.lending.service.BiaoService
 import org.springframework.beans.factory.annotation.Autowired

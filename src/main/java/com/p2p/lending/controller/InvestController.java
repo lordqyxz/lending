@@ -229,7 +229,7 @@ public class InvestController {
 
             Product pro = new Product();
             @SuppressWarnings("unchecked")
-            List<Product> page = productService.findList(BeanUtils.toMap(pro));
+            List<Product> page = productService.findList(BeanUtils.INSTANCE.toMap(pro));
 
             totalrow = page.size();// 获取总行数
             if (currpage != null && !"".equals(currpage)) {
@@ -262,7 +262,7 @@ public class InvestController {
             pro.setPageSize(5);
 
             @SuppressWarnings("unchecked")
-            List<Product> list = productService.findList(BeanUtils.toMap(pro));
+            List<Product> list = productService.findList(BeanUtils.INSTANCE.toMap(pro));
             model.addAttribute("totalrow", totalrow);
             model.addAttribute("currpages", currpages);
             model.addAttribute("totalpage", totalpage);

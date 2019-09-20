@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.DeptDao
+import com.p2p.lending.repository.DeptDao
 import com.p2p.lending.entity.Dept
 import com.p2p.lending.service.DeptService
 import org.springframework.beans.factory.annotation.Autowired

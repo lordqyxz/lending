@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.CreditlimitDao
+import com.p2p.lending.repository.CreditlimitDao
 import com.p2p.lending.entity.Creditlimit
 import com.p2p.lending.service.CreditlimitService
 import org.springframework.beans.factory.annotation.Autowired

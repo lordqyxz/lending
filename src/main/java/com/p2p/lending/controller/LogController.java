@@ -24,7 +24,7 @@ public class LogController {
 
         Log log = new Log();
 
-        List<Log> page = service.findList(BeanUtils.toMap(log));
+        List<Log> page = service.findList(BeanUtils.INSTANCE.toMap(log));
 
         System.out.println(" 222222222222      " + page);
 

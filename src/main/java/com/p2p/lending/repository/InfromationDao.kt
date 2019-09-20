@@ -1,4 +1,4 @@
-package com.p2p.lending.dao
+package com.p2p.lending.repository
 
 import com.p2p.lending.entity.Approveitem
 import com.p2p.lending.entity.Certifrecord

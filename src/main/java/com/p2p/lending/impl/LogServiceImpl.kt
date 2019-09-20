@@ -2,8 +2,8 @@ package com.p2p.lending.impl
 
 import com.github.pagehelper.PageHelper
 import com.github.pagehelper.PageInfo
-import com.p2p.lending.dao.LogDao
 import com.p2p.lending.entity.Log
+import com.p2p.lending.repository.LogDao
 import com.p2p.lending.service.LoggerService
 import com.p2p.lending.util.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +26,7 @@ open class LogServiceImpl : LoggerService {
         pageSize = pageSize ?: 3
         PageHelper.startPage<Any>(pageNo, pageSize)
 
-        val list = logDao!!.findList<Any>((BeanUtils.toMap(params) as Map<String, Any>?)!!)
+        val list = logDao!!.findList<Any>(BeanUtils.toMap(params)!!)
         // װ
         val page = PageInfo(list)
 

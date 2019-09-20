@@ -453,14 +453,14 @@ public class ApproveController {
     private String applyforApprove(Clapplyfor ca) {
         String code = "200";
         int updateCode = 0;
-        updateCode = clapplyforService.updateClapplyforState(BeanUtils.toMap(ca));
+        updateCode = clapplyforService.updateClapplyforState(BeanUtils.INSTANCE.toMap(ca));
         //System.out.println("clpid=="+ca.getClpid()+"   clpubcid=="+ca.getClpubcid()+"   clpporiginal=="+ca.getClpporiginal()+"   clpf=="+ca.getClpf()+"   clpstate=="+ca.getClpstate());
         if (ca.getClpstate().equals("1")) {//审核通过，修改申请表状态，增加信用额度
 
             Creditlimit creditlimit = new Creditlimit();
             creditlimit.setCllimit(ca.getClpporiginal() + ca.getClpf());
             creditlimit.setCrbankcard(ca.getClpubcid());
-            int code1 = creditlimitService.updateCreditlimit(BeanUtils.toMap(creditlimit));
+            int code1 = creditlimitService.updateCreditlimit(BeanUtils.INSTANCE.toMap(creditlimit));
         }
         if (updateCode <= 0) {
             code = "400";

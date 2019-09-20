@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.CertifrecordDao
+import com.p2p.lending.repository.CertifrecordDao
 import com.p2p.lending.entity.Certifrecord
 import com.p2p.lending.service.CertifrecordService
 import org.springframework.beans.factory.annotation.Autowired

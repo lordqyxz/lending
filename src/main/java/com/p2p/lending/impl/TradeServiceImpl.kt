@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.TradeDao
+import com.p2p.lending.repository.TradeDao
 import com.p2p.lending.entity.Trade
 import com.p2p.lending.service.TradeService
 import org.springframework.beans.factory.annotation.Autowired

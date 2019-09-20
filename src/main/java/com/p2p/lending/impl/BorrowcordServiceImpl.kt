@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.BorrowcordDao
+import com.p2p.lending.repository.BorrowcordDao
 import com.p2p.lending.entity.Borrowcord
 import com.p2p.lending.service.BorrowcordService
 import org.springframework.beans.factory.annotation.Autowired

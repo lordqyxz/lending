@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.UserauditorDao
+import com.p2p.lending.repository.UserauditorDao
 import com.p2p.lending.entity.Userauditor
 import com.p2p.lending.service.UserauditorService
 import org.springframework.beans.factory.annotation.Autowired

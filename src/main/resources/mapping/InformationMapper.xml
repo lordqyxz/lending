@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.p2p.lending.dao.InfromationDao">
+<mapper namespace="com.p2p.lending.repository.InfromationDao">
   <select id="query" resultType="com.p2p.lending.entity.Users" parameterType="map">
   	select * from users where uid=${id}
   </select>

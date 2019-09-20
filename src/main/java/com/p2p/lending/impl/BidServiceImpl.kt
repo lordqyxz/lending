@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.BidDao
+import com.p2p.lending.repository.BidDao
 import com.p2p.lending.entity.InvestInfo
 import com.p2p.lending.entity.Product
 import com.p2p.lending.entity.Trade

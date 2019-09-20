@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.PoundageDao
+import com.p2p.lending.repository.PoundageDao
 import com.p2p.lending.entity.Poundage
 import com.p2p.lending.service.PoundageService
 import org.springframework.beans.factory.annotation.Autowired

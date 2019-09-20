@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.p2p.lending.dao.CertificationDao">
+<mapper namespace="com.p2p.lending.repository.CertificationDao">
 	<resultMap type="com.p2p.lending.entity.Certification" id="rm">
 		<id column="id" property="id" jdbcType="INTEGER"></id>
 		<result column="cserial" property="cserial" jdbcType="VARCHAR"></result>

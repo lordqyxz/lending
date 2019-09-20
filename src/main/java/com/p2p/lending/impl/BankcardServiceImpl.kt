@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.BankcardDao
+import com.p2p.lending.repository.BankcardDao
 import com.p2p.lending.service.BankcardService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

@@ -1,7 +1,7 @@
 package com.p2p.lending.impl
 
 
-import com.p2p.lending.dao.WithdrawalDao
+import com.p2p.lending.repository.WithdrawalDao
 import com.p2p.lending.entity.Withdrawal
 import com.p2p.lending.service.WithdrawalService
 import org.springframework.beans.factory.annotation.Autowired

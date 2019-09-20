@@ -32,7 +32,7 @@ public class JobTask {
     @Scheduled(fixedRate = 1000 * 1300000)
     public void print() {
         Product product = new Product();
-        List<Product> list2 = productService.findList(BeanUtils.toMap(product));
+        List<Product> list2 = productService.findList(BeanUtils.INSTANCE.toMap(product));
         productService.updateProgres(list2);
     }
 
@@ -44,7 +44,7 @@ public class JobTask {
     @Scheduled(fixedRate = 1000 * 15000000)
     public void updateStatus() {
         Product product = new Product();
-        List<Product> list2 = productService.findList(BeanUtils.toMap(product));
+        List<Product> list2 = productService.findList(BeanUtils.INSTANCE.toMap(product));
         System.out.println("跟新状态。。。。。。。。。。。。");
         productService.updateStatus(list2);
     }

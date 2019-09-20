@@ -28,7 +28,7 @@ public class BiaoController {
 
         Biao biao = new Biao();
 
-        List<Biao> list = biaoService.findList(BeanUtils.toMap(biao));
+        List<Biao> list = biaoService.findList(BeanUtils.INSTANCE.toMap(biao));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -47,7 +47,7 @@ public class BiaoController {
         biao.setStartPage(startPage);
         biao.setPageSize(5);
 
-        List<Biao> list2 = biaoService.findList(BeanUtils.toMap(biao));
+        List<Biao> list2 = biaoService.findList(BeanUtils.INSTANCE.toMap(biao));
 
         model.addAttribute("list", list2);
         model.addAttribute("listNo", list);

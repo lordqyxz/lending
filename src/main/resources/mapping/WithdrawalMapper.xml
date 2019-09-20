@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.p2p.lending.dao.WithdrawalDao">
+<mapper namespace="com.p2p.lending.repository.WithdrawalDao">
   	<resultMap type="com.p2p.lending.entity.Withdrawal" id="wmap">
   		<id column="wID" property="wID"  jdbcType="INTEGER"/>
   		<result column="uID" property="uID" jdbcType="INTEGER" />

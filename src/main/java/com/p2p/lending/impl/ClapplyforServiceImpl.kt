@@ -1,6 +1,6 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.dao.ClapplyforDao
+import com.p2p.lending.repository.ClapplyforDao
 import com.p2p.lending.entity.Clapplyfor
 import com.p2p.lending.service.ClapplyforService
 import org.springframework.beans.factory.annotation.Autowired

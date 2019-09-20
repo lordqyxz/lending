@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.p2p.lending.dao.ApproveDao">
+<mapper namespace="com.p2p.lending.repository.ApproveDao">
   	<resultMap type="com.p2p.lending.entity.Approveitem" id="BaseResultMap">
   		<id column="aiid" property="aiid" javaType="INTEGER" jdbcType="INTEGER"/>
   		<result column="ainame" property="ainame" javaType="java.lang.String" jdbcType="VARCHAR"/>

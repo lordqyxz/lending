@@ -51,7 +51,7 @@ public class BorrowmoneyController {
 
             borrowmoney1.setBstate(null);
         }
-        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -69,12 +69,12 @@ public class BorrowmoneyController {
         Integer startPage = (currpages - 1) * pagerow;
         borrowmoney1.setStartPage(startPage);
         borrowmoney1.setPageSize(pagerow);
-        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
         model.addAttribute("list", list2);
         model.addAttribute("totalrow", totalrow);
         model.addAttribute("currpages", currpages);
         model.addAttribute("totalpage", totalpage);
-        List<Biao> bList = biaoService.findList(BeanUtils.toMap(new Biao()));
+        List<Biao> bList = biaoService.findList(BeanUtils.INSTANCE.toMap(new Biao()));
 
         model.addAttribute("page", list2);
         model.addAttribute("bList", bList);
@@ -103,7 +103,7 @@ public class BorrowmoneyController {
         int totalpage = 0;// 总页数
         int totalrow = 0;// 总行数
         borrowmoney1.setBstate("0");
-        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -121,7 +121,7 @@ public class BorrowmoneyController {
         Integer startPage = (currpages - 1) * pagerow;
         borrowmoney1.setStartPage(startPage);
         borrowmoney1.setPageSize(pagerow);
-        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
         model.addAttribute("page", list2);
         model.addAttribute("totalrow", totalrow);
         model.addAttribute("currpages", currpages);
@@ -139,7 +139,7 @@ public class BorrowmoneyController {
         int totalrow = 0;// 总行数
         Borrowmoney borrowmoney1 = new Borrowmoney();
         borrowmoney1.setBstate("0");
-        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -157,7 +157,7 @@ public class BorrowmoneyController {
         Integer startPage = (currpages - 1) * pagerow;
         borrowmoney1.setStartPage(startPage);
         borrowmoney1.setPageSize(pagerow);
-        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
+        List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.INSTANCE.toMap(borrowmoney1));
 
         model.addAttribute("page", list2);
         model.addAttribute("totalrow", totalrow);

@@ -2,8 +2,8 @@ package com.p2p.lending.impl
 
 import com.github.pagehelper.PageHelper
 import com.github.pagehelper.PageInfo
-import com.p2p.lending.dao.BorrowmoneyDao
 import com.p2p.lending.entity.Borrowmoney
+import com.p2p.lending.repository.BorrowmoneyDao
 import com.p2p.lending.service.BorrowmoneyService
 import com.p2p.lending.util.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
@@ -44,7 +44,7 @@ open class BorrowmoneyServiceImpl : BorrowmoneyService {
         pageNo = pageNo ?: 1
         pageSize = pageSize ?: 3
         PageHelper.startPage<Any>(pageNo, pageSize)
-        val list = borrowmoneyDao!!.findList<Any>((BeanUtils.toMap(params) as Map<String, Any>?)!!)
+        val list = borrowmoneyDao!!.findList<Any>(BeanUtils.toMap(params)!!)
 
         val page = PageInfo(list)
         println(" PageNum " + page.pageNum)
