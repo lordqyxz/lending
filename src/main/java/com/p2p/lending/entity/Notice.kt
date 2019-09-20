@@ -2,7 +2,7 @@ package com.p2p.lending.entity
 
 import java.util.Date
 
-class Notice {
+class Notice : Serializable{
     // noticeid int(11) NOT NULL AUTO_INCREMENT COMMENT '公告表id',
     // noticetitle varchar(255) DEFAULT NULL COMMENT '公告表标题',
     // noticetype varchar(255) DEFAULT NULL COMMENT '公告类型',

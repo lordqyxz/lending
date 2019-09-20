@@ -2,6 +2,8 @@ package com.p2p.lending.service;
 
 import java.util.List;
 
+import com.p2p.lending.entity.Borrowcord;
+import com.p2p.lending.entity.Borrowmoney;
 import com.p2p.lending.entity.InvestInfo;
 import com.p2p.lending.entity.Product;
 

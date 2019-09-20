@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class BaseController extends LogUtils {
 	@Autowired
-	private LoggerService service;
+	private LoggerService loggerService;
 
 	protected Logger logger = Logger.getLogger(this.getClass());
 	private static final long serialVersionUID = 6357869213649815390L;

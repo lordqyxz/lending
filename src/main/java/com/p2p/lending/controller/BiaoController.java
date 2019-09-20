@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BiaoController {
 	static final String baseDir = "WEB-INF/view/";
 	@Autowired
-	private BiaoService service;
+	private BiaoService biaoService;
 
 	@RequestMapping("list")
 	public String list(Model model,@RequestParam(value = "currpage", required = false) String currpage) {
@@ -28,7 +28,7 @@ public class BiaoController {
 
 		Biao biao = new Biao();
 		
-		List<Biao> list = service.findList(BeanUtils.toMap(biao));
+		List<Biao> list = biaoService.findList(BeanUtils.toMap(biao));
 		totalrow = list.size();// 获取总行数
 		if (currpage != null && !"".equals(currpage)) {
 			currpages = Integer.parseInt(currpage);
@@ -47,7 +47,7 @@ public class BiaoController {
 		biao.setStartPage(startPage);
 		biao.setPageSize(5);
 		
-		List<Biao> list2 = service.findList(BeanUtils.toMap(biao));
+		List<Biao> list2 = biaoService.findList(BeanUtils.toMap(biao));
 
 		model.addAttribute("list", list2);
 		model.addAttribute("listNo", list);
@@ -60,9 +60,9 @@ public class BiaoController {
 	@RequestMapping(value="save")
 	public String save(Biao biao) {
 		if (biao.getId() == null) {
-			service.create(biao);
+			biaoService.create(biao);
 		} else {
-			service.update(biao);
+			biaoService.update(biao);
 		}
 		return "redirect:list.do";
 	}
@@ -73,7 +73,7 @@ public class BiaoController {
 		if (params.getId() == null) {
 			biao = new Biao();
 		} else {
-			biao = service.get(params.getId());
+			biao = biaoService.get(params.getId());
 		}
 		model.addAttribute("domain", biao);
 		return baseDir + "bk_input_biao";
@@ -81,7 +81,7 @@ public class BiaoController {
 
 	@RequestMapping("delete")
 	public String delete(@RequestParam(value = "id", required = true) String bid) {
-		service.delete(Integer.parseInt(bid));
+		biaoService.delete(Integer.parseInt(bid));
 		return "redirect:list.do";
 	}
 }

@@ -1,20 +1,6 @@
 package com.p2p.lending.controller;
 
-import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.p2p.lending.entity.Approveitem;
-import com.p2p.lending.entity.Certification;
-import com.p2p.lending.entity.Certifrecord;
-import com.p2p.lending.entity.Dope;
-import com.p2p.lending.entity.Poundage;
-import com.p2p.lending.entity.Users;
+import com.p2p.lending.entity.*;
 import com.p2p.lending.service.CertificationService;
 import com.p2p.lending.service.DopeService;
 import com.p2p.lending.service.InformationService;
@@ -29,23 +15,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class InformationController {
     @Autowired
-    private InformationService infor;
+    private InformationService informationService;
     @Autowired
-    private PoundageService poun;
+    private PoundageService poundageService;
     @Autowired
-    private CertificationService cer;
+    private CertificationService certificationService;
     @Autowired
-    private DopeService dop;
+    private DopeService dopeService;
 
     // 我的账户
     @RequestMapping("query")
     public String query(@RequestParam(value = "id", required = false) String id, Model model) {
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
-        Users user = infor.query(map);
+        Users user = informationService.query(map);
         model.addAttribute("user", user);
         return "personalpage";
     }
@@ -56,8 +50,8 @@ public class InformationController {
                        HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
-        Users user = infor.find(map);
-        List<Approveitem> list = infor.appquery();
+        Users user = informationService.find(map);
+        List<Approveitem> list = informationService.appquery();
         request.setAttribute("num", user.getUphonenumber());
         request.setAttribute("mailbox", user.getUmailbox());
         Approveitem app = list.get(0);
@@ -81,12 +75,12 @@ public class InformationController {
         map.put("uname", realname);
         map.put("ucardid", IDnumber);
         map.put("uid", uid);
-        infor.addUsers(map);
+        informationService.addUsers(map);
         cer.setCruserid(uid);
         cer.setCrusername(unickname);
         cer.setCraiid(aiid);
         cer.setCrainame(ainame);
-        infor.addcertifrecord(cer);
+        informationService.addcertifrecord(cer);
         return "redirect:/find.do?id=" + uid;
     }
 
@@ -98,24 +92,24 @@ public class InformationController {
                                     @RequestParam(value = "umailbox", required = false) String umailbox,
                                     @RequestParam(value = "uphonenumber", required = false) String uphonenumber,
                                     @RequestParam(value = "upwd_zd", required = false) String upwd_zd) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", id);
+        Map<String, Object> stringObjectHashMap = new HashMap<>();
+        stringObjectHashMap.put("id", id);
         int ucertnumber = (int) ((Math.random() * 9 + 1) * 100000);
         String s = String.valueOf(ucertnumber);
-        map.put("ucertnumber", s);
-        map.put("uname", uname);
-        map.put("ucardid", ucardid);
-        map.put("umailbox", umailbox);
-        map.put("uphonenumber", uphonenumber);
-        map.put("upwd_zd", upwd_zd);
-        infor.upucertnum(map);
+        stringObjectHashMap.put("ucertnumber", s);
+        stringObjectHashMap.put("uname", uname);
+        stringObjectHashMap.put("ucardid", ucardid);
+        stringObjectHashMap.put("umailbox", umailbox);
+        stringObjectHashMap.put("uphonenumber", uphonenumber);
+        stringObjectHashMap.put("upwd_zd", upwd_zd);
+        informationService.upucertnum(stringObjectHashMap);
         return "redirect:/find.do?id=" + id;
     }
 
     //获取金额，提现
     @RequestMapping("withdraw")
     public String withdraw(@RequestParam(value = "id", required = false) Integer id, Model model) {
-        model.addAttribute("cer", cer.select(id));
+        model.addAttribute("cer", certificationService.select(id));
         return "Withdraw";
     }
 
@@ -123,7 +117,7 @@ public class InformationController {
     @RequestMapping("withdrawpay")
     public String withdrawpay(@RequestParam(value = "id", required = true) String id,
                               @RequestParam(value = "actualMoney", required = true) String actualMoney) {
-        Certification certi = cer.select(Integer.parseInt(id));
+        Certification certi = certificationService.select(Integer.parseInt(id));
         String mnum = certi.getCbalance();
         String znum = certi.getCtotalmoney();
         float mf = Float.parseFloat(mnum);
@@ -135,7 +129,7 @@ public class InformationController {
         map.put("uid", id);
         map.put("cbalance", String.valueOf(amf));
         map.put("ctotalmoney", String.valueOf(bmf));
-        cer.upm(map);
+        certificationService.upm(map);
 
         return "redirect:/withdraw.do?id=" + Integer.parseInt(id);
     }
@@ -148,7 +142,7 @@ public class InformationController {
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
         map.put("password", password);
-        infor.updPassword(map);
+        informationService.updPassword(map);
         return "redirect:/find.do?id=" + id;
     }
 
@@ -160,7 +154,7 @@ public class InformationController {
         Map<String, Object> map = new HashMap<>();
         map.put("id", id);
         map.put("phone", newPhone);
-        infor.updphone(map);
+        informationService.updphone(map);
         return "redirect:/find.do?id=" + id;
     }
 
@@ -172,14 +166,14 @@ public class InformationController {
         try {
             System.out.println("-------");
             System.out.println("随机数" + i);
-            FileWriter fw;
+            FileWriter fileWriter;
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             Date date = new Date();
-            fw = new FileWriter("E://test.txt");
-            fw.write("发送时间:" + format.format(date) + "验证码:" + i);
-            fw.flush();
-            fw.close();
+            fileWriter = new FileWriter("E://test.txt");
+            fileWriter.write("发送时间:" + format.format(date) + "验证码:" + i);
+            fileWriter.flush();
+            fileWriter.close();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -197,14 +191,14 @@ public class InformationController {
         Map<String, Object> usermap = new HashMap<>();
         Map<String, Object> map = new HashMap<>();
         usermap.put("id", po.getuID());
-        Users user = infor.find(usermap);
+        Users user = informationService.find(usermap);
         po.setUname(user.getUnickname());
         po.setZname(user.getUname());
         po.setWhat("充值");
         po.setSxtime(date);
         po.setBookaccount(user.getUid() + "");
         po.setPaytype("快捷支付");
-        Certification certi = cer.select(po.getuID());
+        Certification certi = certificationService.select(po.getuID());
         //可用余额
         String cbal = certi.getCbalance();
         String xmoney = po.getSxmoney();
@@ -221,11 +215,11 @@ public class InformationController {
         dope.setDetails("尊敬的" + user.getUnickname() + ",您通过" + po.getPaytype() + "充值的" + po.getSxmoney() + "元已到账!");
         dope.setDtime(date);
         //增加充值明细表数据
-        poun.insert(po);
+        poundageService.insert(po);
         //增加账户金额数据
-        cer.undate(map);
+        certificationService.undate(map);
         //添加广播数据
-        dop.insert(dope);
+        dopeService.insert(dope);
         return code;
     }
 
@@ -237,7 +231,7 @@ public class InformationController {
         int totalpage = 0;// 总页数
         int totalrow = 0;// 总行数
         Poundage poundage = new Poundage();
-        List<Poundage> list = poun.findList(BeanUtils.toMap(poundage));
+        List<Poundage> list = poundageService.findList(BeanUtils.toMap(poundage));
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);

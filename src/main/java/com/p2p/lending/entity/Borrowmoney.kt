@@ -1,6 +1,6 @@
 package com.p2p.lending.entity
 
-class Borrowmoney : BaseDomain() {
+class Borrowmoney : Serializable() {
     var id: Int? = null
     var startPage: Int? = null
     var pageSize: Int? = null

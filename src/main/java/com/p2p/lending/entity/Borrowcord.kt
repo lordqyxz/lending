@@ -2,7 +2,7 @@ package com.p2p.lending.entity
 
 import java.util.Date
 
-class Borrowcord : BaseDomain {
+class Borrowcord : Serializable {
 
     var boid: Int? = null
     var bid: Int? = null

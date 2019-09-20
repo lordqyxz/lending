@@ -11,7 +11,6 @@ class Dope : Serializable {
     var dtime: Date? = null
 
     constructor() {
-
     }
 
 

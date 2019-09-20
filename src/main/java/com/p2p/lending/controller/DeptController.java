@@ -17,11 +17,11 @@ public class DeptController {
 	private Logger log = Logger.getLogger(this.getClass());
 
 	@Autowired
-	private DeptService deptservice;
+	private DeptService deptService;
 
 	@RequestMapping("findall")
 	public String findall(Model model) {
-		List<Dept> deptlist = deptservice.findall();
+		List<Dept> deptlist = deptService.findall();
 		model.addAttribute("deptlist", deptlist);
 		return "WEB-INF/view/bk_deptlist";
 	}
@@ -31,7 +31,7 @@ public class DeptController {
 			@RequestParam(value = "describe", required = false) String describe) {
 		dept.setDname(dname);
 		dept.setDescribes(describe);
-		deptservice.insert(dept);
+		deptService.insert(dept);
 		return "redirect:/dept/findall.do";
 	}
 
@@ -43,7 +43,7 @@ public class DeptController {
 	@RequestMapping("del")
 	public String del(@RequestParam(value = "did", required = false) Integer did) {
 
-		deptservice.del(did);
+		deptService.del(did);
 
 		return "redirect:/dept/findall.do";
 	}
@@ -51,7 +51,7 @@ public class DeptController {
 	@RequestMapping("toupd")
 	public String toupd(@RequestParam(value = "did", required = false) Integer did, Model model) {
 
-		Dept dept = deptservice.findbyid(did);
+		Dept dept = deptService.findbyid(did);
 
 		model.addAttribute("dept", dept);
 		return "WEB-INF/view/bk_deptupd";
@@ -61,10 +61,10 @@ public class DeptController {
 	public String upd(@RequestParam(value = "did", required = false) Integer did,
 			@RequestParam(value = "dname", required = false) String dname,
 			@RequestParam(value = "describes", required = false) String describes) {
-		Dept dept = deptservice.findbyid(did);
+		Dept dept = deptService.findbyid(did);
 		dept.setDescribes(describes);
 		dept.setDname(dname);
-		deptservice.upd(dept);
+		deptService.upd(dept);
 		return "redirect:/dept/findall.do";
 	}
 

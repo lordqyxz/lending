@@ -1,8 +1,8 @@
 package com.p2p.lending.entity
 
-import java.util.Date
+import java.util.*
 
-class Users : BaseDomain {
+class Users : Serializable {
     var uid: Int? = null
     var unickname: String? = null
     var ucardid: String? = null

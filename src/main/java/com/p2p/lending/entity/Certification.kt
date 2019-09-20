@@ -1,6 +1,6 @@
 package com.p2p.lending.entity
 
-class Certification {
+class Certification : Serializable() {
     var id: Int? = null
 
     var cserial: String? = null

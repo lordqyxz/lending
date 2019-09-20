@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DopeController {
 	@Autowired
-	private DopeService service;
+	private DopeService dopeService;
 	
 	//分页查询
 	@RequestMapping("queryDope")
@@ -27,7 +27,7 @@ public class DopeController {
 		int totalPage = 0;//总页数
 		int totalRow = 0;//总行数
 		//获取总行数
-		totalRow=service.total().size();
+		totalRow= dopeService.total().size();
 		//分页
 		totalPage = (totalRow + pagecount - 1) / pagecount;
 		if(conent!=null&&!"".equals(conent)){
@@ -43,7 +43,7 @@ public class DopeController {
 		Map<String, Object> map=new HashMap<>();
 		map.put("pagecount", pagecount);
 		map.put("currpage", candp);
-		List<Dope> list=service.findDope(map);
+		List<Dope> list= dopeService.findDope(map);
 		model.addAttribute("list", list);
 		model.addAttribute("pagecount",pagecount);
 		model.addAttribute("currpage",currpage);
@@ -63,7 +63,7 @@ public class DopeController {
 		}
 		for (int i = 0; i < list.size(); i++) {
 			
-			service.batchDeletes(Integer.parseInt((String) list.get(i)));
+			dopeService.batchDeletes(Integer.parseInt((String) list.get(i)));
 		}	
 		return "redirect:/queryDope.do";
 	}

@@ -1,10 +1,9 @@
 package com.p2p.lending.entity
 
-import java.util.Date
-
 import org.springframework.format.annotation.DateTimeFormat
+import java.util.*
 
-class Product : BaseDomain() {
+class Product : Serializable() {
     var pmoney: Int? = null
     var startPage: Int? = null
     var pageSize: Int? = null
@@ -66,12 +65,6 @@ class Product : BaseDomain() {
         set(psafe) {
             field = psafe?.trim { it <= ' ' }
         }
-
-    var biao: Biao? = null
-
-    var details: Details? = null
-
-    var users: Users? = null
 
     init {
         this.pmoney = 0

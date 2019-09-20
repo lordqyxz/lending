@@ -3,7 +3,7 @@ package com.p2p.lending.entity
 import java.math.BigDecimal
 import java.sql.Timestamp
 
-class InvestInfo : BaseDomain() {
+class InvestInfo : Serializable() {
 
     var inid: Int = 0 // '投资信息表主键',
     var userid: Int = 0 // '投资用户主键',

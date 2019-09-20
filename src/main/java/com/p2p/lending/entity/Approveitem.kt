@@ -5,8 +5,6 @@ import java.io.Serializable
 /**
  * @Name: Approveitem
  * @Description:认证项的JavaBeans
- * @author chenqingshan
- * @Date: 2017-2-20 Time: 19:58
  */
 class Approveitem : Serializable {
 

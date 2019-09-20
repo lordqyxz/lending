@@ -1,6 +1,8 @@
 package com.p2p.lending.entity
 
-class Biao : BaseDomain() {
+import java.io.Serializable
+
+class Biao : Serializable {
     var startPage: Int? = null
 
 

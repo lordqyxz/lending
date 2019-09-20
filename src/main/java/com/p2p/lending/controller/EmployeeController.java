@@ -1,11 +1,5 @@
 package com.p2p.lending.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
-import org.apache.log4j.Logger;
 import com.p2p.lending.entity.Dept;
 import com.p2p.lending.entity.Employee;
 import com.p2p.lending.entity.Limi;
@@ -13,6 +7,7 @@ import com.p2p.lending.service.DeptService;
 import com.p2p.lending.service.EmployeeService;
 import com.p2p.lending.service.LimitService;
 import com.p2p.lending.util.DateUtil;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("employee")
 public class EmployeeController {
+	private String str = "WEB-INF/view/";
 	private Logger log = Logger.getLogger(this.getClass());
 	@Autowired
 	private EmployeeService employeeService;
@@ -38,7 +38,7 @@ public class EmployeeController {
 		// 查询部门
 		List<Dept> deptlist = deptService.findall();
 		model.addAttribute("depts", deptlist);
-		return "/WEB-INF/view/bk_emplist";
+		return str+"bk_emplist";
 	}
 
 	@RequestMapping("insert")
@@ -128,7 +128,7 @@ public class EmployeeController {
 	public String inserts(Model model) {
 		List<Dept> deptlist = deptService.findall();
 		model.addAttribute("dept", deptlist);
-		return "WEB-INF/view/bk_empadd";
+		return str+"bk_empadd";
 	}
 
 	@RequestMapping("del")
@@ -149,7 +149,7 @@ public class EmployeeController {
 		// 查询部门
 		List<Dept> deptlist = deptService.findall();
 		model.addAttribute("dept", deptlist);
-		return "WEB-INF/view/bk_empupd";
+		return str+"bk_empupd";
 	}
 	@RequestMapping("selectlike")
 	public String selectlike(Model model,
@@ -162,7 +162,7 @@ public class EmployeeController {
 		List<Dept> deptlist = deptService.findall();
 		model.addAttribute("depts", deptlist);
 	
-		return "/WEB-INF/view/bk_emplist";
+		return str+"bk_emplist";
 	}
 	
 	//注册验证用户名已经存在

@@ -1,11 +1,11 @@
 package com.p2p.lending.entity
 
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 /**
  *
- * @author Hjy 提现管理表
+ * 提现管理表
  */
 
 class Withdrawal : Serializable {

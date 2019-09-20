@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.entity.Biao;
+import com.p2p.lending.entity.Borrowmoney;
+
+import com.github.pagehelper.PageInfo;
 
 public interface BiaoService {
 

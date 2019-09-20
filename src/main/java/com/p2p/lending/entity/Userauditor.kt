@@ -4,7 +4,7 @@ import java.io.Serializable
 
 /**
  * 用户与审核人
- * @author Administrator
+ *
  */
 class Userauditor : Serializable {
     private var uaid: Int? = null//'编号',

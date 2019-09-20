@@ -1,6 +1,6 @@
 package com.p2p.lending.entity
 
-class Limi : BaseDomain {
+class Limi : Serializable {
 
     var lid: Int? = null
     var eid: Int? = null

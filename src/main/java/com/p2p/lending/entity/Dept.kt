@@ -2,7 +2,7 @@ package com.p2p.lending.entity
 
 import java.util.Date
 
-class Dept : BaseDomain {
+class Dept : Serializable {
 
     var did: Int? = null
 

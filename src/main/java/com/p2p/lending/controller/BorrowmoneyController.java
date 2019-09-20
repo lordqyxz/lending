@@ -26,9 +26,9 @@ public class BorrowmoneyController {
 	@Autowired
 	public BiaoService biaoService;
 	@Autowired
-	private BorrowmoneyService service;
+	private BorrowmoneyService borrowmoneyService;
 	@Autowired
-	private BorrowcordService bService;
+	private BorrowcordService borrowcordService;
 	static final String str = "WEB-INF/view/";
 
 	@RequestMapping("qurey")
@@ -52,7 +52,7 @@ public class BorrowmoneyController {
 
 			borrowmoney1.setBstate(null);
 		}
-		List<Borrowmoney> list = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 		totalrow = list.size();// 获取总行数
 		if (currpage != null && !"".equals(currpage)) {
 			currpages = Integer.parseInt(currpage);
@@ -70,7 +70,7 @@ public class BorrowmoneyController {
 		Integer startPage = (currpages - 1) * pagerow;
 		borrowmoney1.setStartPage(startPage);
 		borrowmoney1.setPageSize(pagerow);
-		List<Borrowmoney> list2 = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 		model.addAttribute("list", list2);
 		model.addAttribute("totalrow", totalrow);
 		model.addAttribute("currpages", currpages);
@@ -97,14 +97,14 @@ public class BorrowmoneyController {
 			borrowmoney1.setBstate("2");
 		}
 		borrowmoney1.setId(Integer.parseInt(id));
-		service.update(borrowmoney1);
+		borrowmoneyService.update(borrowmoney1);
 
 		final int pagerow = 5;// 每页5行
 		int currpages = 1;// 当前页
 		int totalpage = 0;// 总页数
 		int totalrow = 0;// 总行数
 		borrowmoney1.setBstate("0");
-		List<Borrowmoney> list = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 		totalrow = list.size();// 获取总行数
 		if (currpage != null && !"".equals(currpage)) {
 			currpages = Integer.parseInt(currpage);
@@ -122,7 +122,7 @@ public class BorrowmoneyController {
 		Integer startPage = (currpages - 1) * pagerow;
 		borrowmoney1.setStartPage(startPage);
 		borrowmoney1.setPageSize(pagerow);
-		List<Borrowmoney> list2 = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 		model.addAttribute("page", list2);
 		model.addAttribute("totalrow", totalrow);
 		model.addAttribute("currpages", currpages);
@@ -140,7 +140,7 @@ public class BorrowmoneyController {
 		int totalrow = 0;// 总行数
 		Borrowmoney borrowmoney1 = new Borrowmoney();
 		borrowmoney1.setBstate("0");
-		List<Borrowmoney> list = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 		totalrow = list.size();// 获取总行数
 		if (currpage != null && !"".equals(currpage)) {
 			currpages = Integer.parseInt(currpage);
@@ -158,7 +158,7 @@ public class BorrowmoneyController {
 		Integer startPage = (currpages - 1) * pagerow;
 		borrowmoney1.setStartPage(startPage);
 		borrowmoney1.setPageSize(pagerow);
-		List<Borrowmoney> list2 = service.findList(BeanUtils.toMap(borrowmoney1));
+		List<Borrowmoney> list2 = borrowmoneyService.findList(BeanUtils.toMap(borrowmoney1));
 
 		model.addAttribute("page", list2);
 		model.addAttribute("totalrow", totalrow);
@@ -175,7 +175,7 @@ public class BorrowmoneyController {
 			id = 1 + "";
 		}
 		Integer ia = Integer.parseInt(id);
-		Borrowmoney mBorrowmoney = service.get(ia);
+		Borrowmoney mBorrowmoney = borrowmoneyService.get(ia);
 		model.addAttribute("domain", mBorrowmoney);
 		return str + "bk_money_detail";
 	}
@@ -184,15 +184,15 @@ public class BorrowmoneyController {
 	@RequestMapping("toaddborr")
 	@ResponseBody
 	public String toadd(Borrowmoney borrowmoney) {
-		service.toaddborr(borrowmoney);
+		borrowmoneyService.toaddborr(borrowmoney);
 		return "";
 	}
 
 	// 周旗 __________还款(查询所有需要还款的还款)
 	@RequestMapping("tohk")
 	public String updhuankuan(Model model) {
-		System.out.println(service.updhuankuan().size() + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		model.addAttribute("list", service.updhuankuan());
+		System.out.println(borrowmoneyService.updhuankuan().size() + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		model.addAttribute("list", borrowmoneyService.updhuankuan());
 
 		return str + "bk_huankuanlist";
 	}
@@ -200,9 +200,9 @@ public class BorrowmoneyController {
 	// 周旗 __________去查看还款详情页面
 	@RequestMapping("tohuankuanupd")
 	public String tohuankuan(Model model, @RequestParam(value = "id") Integer ids) {
-		Borrowmoney borr = service.get(ids);
+		Borrowmoney borr = borrowmoneyService.get(ids);
 		model.addAttribute("borr", borr);
-		model.addAttribute("list", bService.selborr(ids));
+		model.addAttribute("list", borrowcordService.selborr(ids));
 
 		return str + "bk_huankuanupdeta";
 	}
@@ -212,7 +212,7 @@ public class BorrowmoneyController {
 	public String tohuankuanupd(Model model, @RequestParam(value = "ids") Integer ids,
 			@RequestParam(value = "id") Integer id) {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>修改还款状态");
-		bService.updborr(ids);
+		borrowcordService.updborr(ids);
 		return "redirect:tohuankuanupd.do?id=" + id;
 	}
 
@@ -220,14 +220,14 @@ public class BorrowmoneyController {
 	@RequestMapping("tohuankuanupdison")
 	@ResponseBody
 	public List<Borrowcord> tohuankuanjson(@RequestParam(value = "id") Integer ids) {
-		List<Borrowcord> list = bService.selborr(ids);
+		List<Borrowcord> list = borrowcordService.selborr(ids);
 		return list;
 	}
 
 	// 周旗 点击同意时进入借款信息确认见面
 	@RequestMapping("borqr")
 	public String borqr(Model model, @RequestParam(value = "ids") Integer ids) {
-		Borrowmoney borro = service.borrowget(ids);
+		Borrowmoney borro = borrowmoneyService.borrowget(ids);
 		model.addAttribute("borr", borro);
 		return str + "bk_huankuanget";
 	}
@@ -237,9 +237,9 @@ public class BorrowmoneyController {
 	public String borxg(Model model, Borrowmoney borrowmoney) {
 		//修改状态
 		borrowmoney.setBstate("1");
-		service.update(borrowmoney);
+		borrowmoneyService.update(borrowmoney);
 		//处理还款记录表
-		bService.borradd(borrowmoney.getBtimelimit(), borrowmoney.getId(), borrowmoney.getBserial());
+		borrowcordService.borradd(borrowmoney.getBtimelimit(), borrowmoney.getId(), borrowmoney.getBserial());
 		
 		return "redirect:check.do";
 	}
@@ -247,7 +247,7 @@ public class BorrowmoneyController {
 	// hjy
 	@RequestMapping("hjyList")
 	public String hjyList(Model m, @RequestParam(value = "currpage", required = false) String currpage) {
-		Map<String, Object> wmap = service.selecthjy(currpage);
+		Map<String, Object> wmap = borrowmoneyService.selecthjy(currpage);
 		List<Borrowmoney> llist = (List<Borrowmoney>) wmap.get("llist");
 		m.addAttribute("pagerow", wmap.get("pagerow"));
 		m.addAttribute("currpages", wmap.get("currpages"));
@@ -262,8 +262,8 @@ public class BorrowmoneyController {
 	@ResponseBody
 	public Borrowmoney ajax(@RequestParam(value = "id", required = false) int id) {
 		System.out.println(id);
-		System.out.println(service.get(id).getBrelname());
-		return service.get(id);
+		System.out.println(borrowmoneyService.get(id).getBrelname());
+		return borrowmoneyService.get(id);
 	}
 
 }

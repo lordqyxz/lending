@@ -2,7 +2,7 @@ package com.p2p.lending.entity
 
 import java.util.Date
 
-class Log : BaseDomain() {
+class Log : Serializable() {
 
     var id: Int? = null
     var laccount: String? = null
