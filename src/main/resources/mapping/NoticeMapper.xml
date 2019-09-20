@@ -32,7 +32,7 @@
 	</select>
 	
 	<insert id="noticeadd" parameterType="com.p2p.lending.pojo.Notice" >
-		insert into Notice(
+		insert into notice(
 		noticetitle,noticetype,noticepicture,
 		noticecontent,noticelasttime,noticelastmodifier)
 		values
@@ -41,7 +41,7 @@
 	</insert>
 	
 	<delete id="noticedel" parameterType="int">
-		delete from Notice
+		delete from notice
 		where noticeid = #{ids}
 	</delete>
 	<update id="noticeupds" parameterType="com.p2p.lending.pojo.Notice">
