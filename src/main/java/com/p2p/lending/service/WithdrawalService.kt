@@ -1,10 +1,10 @@
 package com.p2p.lending.service
 
 
-import com.p2p.lending.entity.Approveitem
 import com.p2p.lending.entity.Withdrawal
+import org.springframework.stereotype.Service
 
-
+@Service
 interface WithdrawalService {
     fun withdrawallist(currpage: String, btn: String, findmap: Map<String, Any>): Map<String, Any>
     fun selectallw(): List<Withdrawal>

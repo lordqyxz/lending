@@ -2,7 +2,10 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Borrowmoney
 import org.apache.ibatis.annotations.Param
+import org.springframework.stereotype.Repository
 
+
+@Repository
 interface BaseDao<ID : Any, Domain : Any> {
 
     /**

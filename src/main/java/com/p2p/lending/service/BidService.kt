@@ -1,10 +1,10 @@
 package com.p2p.lending.service
 
-import com.p2p.lending.entity.Borrowcord
-import com.p2p.lending.entity.Borrowmoney
 import com.p2p.lending.entity.InvestInfo
 import com.p2p.lending.entity.Product
+import org.springframework.stereotype.Service
 
+@Service
 interface BidService {
 
     fun todaoqi(): List<Product>

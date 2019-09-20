@@ -2,6 +2,9 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Dope
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface DopeDao {
     fun insert(dope: Dope): Int
     //分页查询

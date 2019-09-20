@@ -1,7 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Dept
+import org.springframework.stereotype.Service
 
+@Service
 interface DeptService {
     fun findall(): List<Dept>
 

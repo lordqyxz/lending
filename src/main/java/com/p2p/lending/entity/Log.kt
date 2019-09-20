@@ -1,8 +1,9 @@
 package com.p2p.lending.entity
 
-import java.util.Date
+import java.io.Serializable
+import java.util.*
 
-class Log : Serializable() {
+class Log : Serializable {
 
     var id: Int? = null
     var laccount: String? = null
@@ -12,4 +13,5 @@ class Log : Serializable() {
 
     var lprocestime: Date? = null
 
+    constructor()
 }

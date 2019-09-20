@@ -1,10 +1,10 @@
 package com.p2p.lending.service
 
-import com.p2p.lending.entity.Borrowmoney
-import com.p2p.lending.entity.Log
-
 import com.github.pagehelper.PageInfo
+import com.p2p.lending.entity.Log
+import org.springframework.stereotype.Service
 
+@Service
 interface LoggerService {
 
     fun findList(log: Log, pageNo: Int?, pageSize: Int?): PageInfo<Log>

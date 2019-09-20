@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.p2p.lending.dao")
+@MapperScan(basePackages = "com.p2p.lending.biaoMapperDao")
 public class LendingApplication {
 
     public static void main(String[] args) {

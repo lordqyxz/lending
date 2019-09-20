@@ -1,6 +1,7 @@
 package com.p2p.lending.entity
 
-import java.util.Date
+import java.io.Serializable
+import java.util.*
 
 class Employee : Serializable {
 
@@ -17,7 +18,7 @@ class Employee : Serializable {
     var epassword: String? = null
     var estatus: Int? = null
 
-    constructor() : super() {}
+    constructor() : super()
 
     constructor(eid: Int?, ename: String, esex: String, ebirth: Date, eidcard: String, ephone: String, email: String,
                 edeptno: Int?, epostno: String, etime: Date, epassword: String, estatus: Int?) {

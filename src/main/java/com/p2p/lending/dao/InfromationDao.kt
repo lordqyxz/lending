@@ -4,6 +4,9 @@ import com.p2p.lending.entity.Approveitem
 import com.p2p.lending.entity.Certifrecord
 import com.p2p.lending.entity.Users
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface InfromationDao {
     // 我的账户
     fun query(map: Map<String, Any>): Users

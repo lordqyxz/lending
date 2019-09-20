@@ -2,6 +2,9 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Product
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface ProductDao : BaseDao<Any, Product> {
 
     fun updateProgres(product: Product)

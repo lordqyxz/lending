@@ -1,8 +1,10 @@
 package com.p2p.lending.service
 
-import org.apache.ibatis.annotations.Param
 import com.p2p.lending.entity.Employee
+import org.apache.ibatis.annotations.Param
+import org.springframework.stereotype.Service
 
+@Service
 interface EmployeeService {
 
     // 无条件查询所有加分页
@@ -12,7 +14,7 @@ interface EmployeeService {
     fun insert(emp: Employee): Int
 
     // 登录
-    fun empLogin(@Param("ename") ename: String, @Param("epassword") epassword: String): Employee
+    fun empLogin(@Param("ename") ename: String, @Param("epassword") epassword: String): Employee?
 
     //添加员工
     fun add(emp: Employee): Int

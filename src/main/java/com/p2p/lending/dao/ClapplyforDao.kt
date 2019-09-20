@@ -2,6 +2,9 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Clapplyfor
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface ClapplyforDao {
 
     fun queryClapplyfors(map: Map<String, Any>): List<Clapplyfor>

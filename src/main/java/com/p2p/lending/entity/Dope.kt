@@ -1,7 +1,7 @@
 package com.p2p.lending.entity
 
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 class Dope : Serializable {
     var did: Int? = null
@@ -10,8 +10,7 @@ class Dope : Serializable {
     var details: String? = null
     var dtime: Date? = null
 
-    constructor() {
-    }
+    constructor()
 
 
     constructor(did: Int?, dprimkey: Int?, dtitle: String, details: String, dtime: Date) : super() {

@@ -1,7 +1,7 @@
 package com.p2p.lending.entity
 
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 class Clapplyfor : Serializable {
     //	 `clpid`   '申请编号',
@@ -26,9 +26,7 @@ class Clapplyfor : Serializable {
     var clpstate: String? = null
 
 
-    constructor() {
-
-    }
+    constructor()
 
     constructor(clpid: Int?, clpubcid: String, clpuname: String, clpporiginal: Double?, clpidpaper: String,
                 clphpoc: String, clpf: Double?, clpdate: Date, clpauditor: String, clpstate: String) {

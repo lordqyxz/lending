@@ -1,5 +1,7 @@
 package com.p2p.lending.entity
 
+import java.io.Serializable
+
 class Limi : Serializable {
 
     var lid: Int? = null
@@ -12,7 +14,7 @@ class Limi : Serializable {
         this.mid = mid
     }
 
-    constructor() : super() {}
+    constructor() : super()
 
 
 }

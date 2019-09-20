@@ -26,7 +26,7 @@ class Withdrawal : Serializable {
     var shtime: Date? = null
     var nothing: String? = null
 
-    constructor() {}
+    constructor()
 
     constructor(wID: Int?, uID: Int?, uname: String, zname: String, txnum: String, txbank: String, txmoney: String,
                 dzmoney: String, sxf: String, txtime: Date, zztime: Date, statu: String, shwho: String, shtime: Date,

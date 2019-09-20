@@ -1,6 +1,8 @@
 package com.p2p.lending.entity
 
-import java.util.Date
+import java.io.Serializable
+import java.util.*
+
 
 class Borrowcord : Serializable {
 

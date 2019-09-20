@@ -1,7 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Limi
+import org.springframework.stereotype.Service
 
+@Service
 interface LimitService {
 
     //根据员工ID查询该用户权限的模块

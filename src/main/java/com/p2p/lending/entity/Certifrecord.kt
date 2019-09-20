@@ -1,7 +1,7 @@
 package com.p2p.lending.entity
 
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 /**
  * @Description:认证申请记录的bean
@@ -26,9 +26,7 @@ class Certifrecord : Serializable {
 
     var checkpend: Int? = null//待审核
 
-    constructor() {
-
-    }
+    constructor()
 
 
     constructor(crid: Int?, cruserid: Int?, crusername: String, craiid: Int?, crainame: String,

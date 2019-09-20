@@ -21,9 +21,7 @@ class Approveitem : Serializable {
         get() = ("Info aiid==" + this.aiid + "  ainame==" + this.ainame + "  aitype==" + this.aitype
                 + "  aistate==" + this.aistate)
 
-    constructor() {
-
-    }
+    constructor()
 
     constructor(aiid: Int?, ainame: String, aitype: String, aistate: String) {
 

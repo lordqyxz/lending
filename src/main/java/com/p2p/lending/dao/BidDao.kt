@@ -1,14 +1,9 @@
 package com.p2p.lending.dao
 
-import com.p2p.lending.entity.Borrowcord
-import com.p2p.lending.entity.Borrowmoney
-import com.p2p.lending.entity.Certification
-import com.p2p.lending.entity.InvestInfo
-import com.p2p.lending.entity.Product
-import com.p2p.lending.entity.Trade
-import com.p2p.lending.entity.Users
-import com.p2p.lending.entity.Withdrawal
+import com.p2p.lending.entity.*
+import org.springframework.stereotype.Repository
 
+@Repository
 interface BidDao {
 
     fun todaoqi(): List<Product>

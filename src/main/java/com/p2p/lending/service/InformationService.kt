@@ -3,7 +3,9 @@ package com.p2p.lending.service
 import com.p2p.lending.entity.Approveitem
 import com.p2p.lending.entity.Certifrecord
 import com.p2p.lending.entity.Users
+import org.springframework.stereotype.Service
 
+@Service
 interface InformationService {
     fun query(map: Map<String, Any>): Users
 

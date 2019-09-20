@@ -6,6 +6,9 @@ import com.p2p.lending.entity.Notice
  *
  * @author zhouqi 2017年2月23日10:13:22 网站消息通告模块
  */
+import org.springframework.stereotype.Repository
+
+@Repository
 interface NoticeDao {
     /**
      * 查询网站通知表list

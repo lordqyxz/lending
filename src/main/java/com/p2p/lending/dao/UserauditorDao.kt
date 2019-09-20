@@ -2,6 +2,9 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Userauditor
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface UserauditorDao {
 
     fun queryUserauditor(map: Map<String, Any>): List<Userauditor>

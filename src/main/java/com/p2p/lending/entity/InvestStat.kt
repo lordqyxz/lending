@@ -1,9 +1,10 @@
 package com.p2p.lending.entity
 
+import java.io.Serializable
 import java.math.BigDecimal
 import java.sql.Timestamp
 
-class InvestStat : Serializable() {
+class InvestStat : Serializable {
 
     var isid: Int = 0// '投资信息统计表主键',
     var userid: Int = 0// '投资用户主键',
@@ -20,6 +21,8 @@ class InvestStat : Serializable() {
                 + ", gmcount=" + gmcount + ", markmoney=" + markmoney + ", markgain=" + markgain + ", markbegindate="
                 + markbegindate + ", markenddate=" + markenddate + "]")
     }
+
+    constructor()
 
     companion object {
         /**

@@ -333,7 +333,7 @@ public class InvestController {
     public String investInfo(
             String bmid, String currpage,
             Model model, HttpServletRequest req) {// Borrowmoney bm
-        System.out.println(bmid.toString());
+        System.out.println(bmid);
         // Borrowmoney bm = service.get(Integer.parseInt(bmid));
         // System.out.println(bm.toString());
         // model.addAttribute("Borrowmoney", bm);
@@ -511,8 +511,8 @@ public class InvestController {
             productService.update(pro);
             //判断项目是否满标
             DecimalFormat df = new DecimalFormat("0.00");
-            String udm = df.format(updMoney).toString();
-            String odm = df.format(pro.getPtotalmoney()).toString();
+            String udm = df.format(updMoney);
+            String odm = df.format(pro.getPtotalmoney());
             if (udm.equals(odm)) {//刚好凑集完
                 pro.setPstate("2");//修改为凑资完
                 productService.update(pro);

@@ -15,7 +15,7 @@ spring:
 mybatis:
   mapper-locations:   classpath:/mapping/*.xml
   config-location:  classpath:/mybatis-config.xml
-  type-aliases-package: com.p2p.lending.dao
+  type-aliases-package: com.p2p.lending.biaoMapperDao
 
 logging:
   level:

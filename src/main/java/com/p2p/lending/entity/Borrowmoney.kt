@@ -1,6 +1,8 @@
 package com.p2p.lending.entity
 
-class Borrowmoney : Serializable() {
+import java.io.Serializable
+
+class Borrowmoney : Serializable {
     var id: Int? = null
     var startPage: Int? = null
     var pageSize: Int? = null
@@ -44,4 +46,5 @@ class Borrowmoney : Serializable() {
                 + brecommend + ", beizhu1=" + beizhu1 + ", beizhu2=" + beizhu2 + "]")
     }
 
+    constructor()
 }// TODO Auto-generated constructor stub

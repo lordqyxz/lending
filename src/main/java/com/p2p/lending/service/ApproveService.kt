@@ -1,6 +1,7 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Approveitem
+import org.springframework.stereotype.Service
 
 /**
  * @Name: ApproveService
@@ -8,7 +9,8 @@ import com.p2p.lending.entity.Approveitem
  * @author chenqingshan
  * @Date: 2017-2-20 Time: 20:24
  */
-interface ApproveService {
+@Service
+open interface ApproveService {
     /**
      * Description锛氭牴鎹潯浠惰幏鍙栬璇侀」锛屽鏋滄潯浠朵负绌哄垯鏀惧洖鎵�湁璁よ瘉椤�
      *

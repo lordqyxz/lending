@@ -1,11 +1,10 @@
 package com.p2p.lending.service
 
-import com.p2p.lending.entity.Approveitem
-import com.p2p.lending.entity.Borrowmoney
-import com.p2p.lending.entity.Log
-
 import com.github.pagehelper.PageInfo
+import com.p2p.lending.entity.Borrowmoney
+import org.springframework.stereotype.Service
 
+@Service
 interface BorrowmoneyService {
 
     fun findList(map: Map<String, Any>): List<Borrowmoney>

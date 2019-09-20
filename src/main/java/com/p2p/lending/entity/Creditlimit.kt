@@ -19,9 +19,7 @@ class Creditlimit : Serializable {
         get() = ("Info clid==" + this.clid + "  cluserid==" + this.cluserid + "  clusername=="
                 + this.clusername + "  crbankcard==" + this.crbankcard + "  cllimit==" + this.cllimit)
 
-    constructor() {
-
-    }
+    constructor()
 
     constructor(clid: Int?, cluserid: Int?, clusername: String, crbankcard: String, cllimit: Double?) {
 

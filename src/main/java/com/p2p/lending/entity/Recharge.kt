@@ -16,7 +16,7 @@ class Recharge : Serializable {
     var statu: String? = null
     var zname: String? = null
 
-    constructor() {}
+    constructor()
 
 
     constructor(rID: Int?, uID: Int?, uname: String, czlx: String,

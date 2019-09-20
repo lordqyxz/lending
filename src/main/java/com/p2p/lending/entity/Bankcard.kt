@@ -18,7 +18,7 @@ class Bankcard : Serializable {
     var tjtime: Date? = null
     var statu: String? = null
 
-    constructor() {}
+    constructor()
 
     constructor(bID: Int?, uID: Int?, uname: String, zname: String, sfz: String, khh: String, cardid: String,
                 tjtime: Date, statu: String) {

@@ -1,7 +1,9 @@
 package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Bankcard
+import org.springframework.stereotype.Repository
 
+@Repository
 interface BankcardDao {
 
     fun selectbc(map: Map<String, Any>): List<Bankcard>

@@ -1,8 +1,10 @@
 package com.p2p.lending.dao
 
-import org.apache.ibatis.annotations.Param
 import com.p2p.lending.entity.Users
+import org.apache.ibatis.annotations.Param
+import org.springframework.stereotype.Repository
 
+@Repository
 interface UsersDao {
 
     fun queryUserslimits(map: Map<String, Any>): List<Users>

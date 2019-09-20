@@ -1,8 +1,10 @@
 package com.p2p.lending.dao
 
-import org.apache.ibatis.annotations.Param
 import com.p2p.lending.entity.Employee
+import org.apache.ibatis.annotations.Param
+import org.springframework.stereotype.Repository
 
+@Repository
 interface EmployeeDao {
 
     // 无条件查询所有加分页

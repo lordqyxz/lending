@@ -4,6 +4,9 @@ package com.p2p.lending.dao
 import com.p2p.lending.entity.Withdrawal
 
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface WithdrawalDao {
 
     fun withdrawallist(map: Map<String, Any>): List<Withdrawal>

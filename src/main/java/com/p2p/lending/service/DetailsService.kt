@@ -1,7 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Details
+import org.springframework.stereotype.Service
 
+@Service
 interface DetailsService {
 
     fun detailslist(pid: Int?): List<Details>

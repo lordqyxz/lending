@@ -1,6 +1,7 @@
 package com.p2p.lending.entity
 
-import java.util.Date
+import java.io.Serializable
+import java.util.*
 
 class Dept : Serializable {
 
@@ -20,8 +21,6 @@ class Dept : Serializable {
         this.describes = describes
     }
 
-    constructor() {
-
-    }
+    constructor()
 
 }

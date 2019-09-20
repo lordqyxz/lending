@@ -1,10 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Biao
-import com.p2p.lending.entity.Borrowmoney
+import org.springframework.stereotype.Service
 
-import com.github.pagehelper.PageInfo
-
+@Service
 interface BiaoService {
 
     fun findList(map: Map<String, Any>): List<Biao>

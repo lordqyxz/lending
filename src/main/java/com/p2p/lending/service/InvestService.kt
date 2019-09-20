@@ -1,9 +1,9 @@
 package com.p2p.lending.service
 
-import java.math.BigDecimal
-
 import com.p2p.lending.entity.InvestInfo
+import org.springframework.stereotype.Service
 
+@Service
 interface InvestService {
     fun investA(ii: InvestInfo): Int
     fun investS(map: Map<String, Any>): List<InvestInfo>

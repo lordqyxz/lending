@@ -1,5 +1,6 @@
 package com.p2p.lending.entity
 
+import java.io.Serializable
 import java.util.*
 
 class Users : Serializable {
@@ -20,9 +21,7 @@ class Users : Serializable {
     var upassword: String? = null
     var upwd_zd: String? = null
 
-    constructor() {
-
-    }
+    constructor()
 
     constructor(uid: Int?, unickname: String, ucardid: String, uhead: String, uname: String, umailbox: String,
                 uphonenumber: String, uregisterdate: Date, uflip: String, ufldate: Date, ureferrer: String, ureferrername: String,

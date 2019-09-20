@@ -28,7 +28,7 @@ public class ProductController {
     @Resource
     InvestService InvestService;
     @Autowired
-    private UsersService usersservice;
+    private UsersService usersService;
     @Autowired
     private BiaoService biaoService;
     @Resource
@@ -107,7 +107,7 @@ public class ProductController {
         InvestInfo ii = new InvestInfo();
         ii.setBrrowid(Integer.parseInt(bid));
         List<InvestInfo> list = InvestService.getDtail(BeanUtils.toMap(ii));
-        List<Users> ulist = usersservice.userList();
+        List<Users> ulist = usersService.userList();
         totalrow = list.size();// 获取总行数
         if (currpage != null && !"".equals(currpage)) {
             currpages = Integer.parseInt(currpage);
@@ -204,7 +204,7 @@ public class ProductController {
 
     @RequestMapping("delete")
     public String delete(@RequestParam("pid") String pid) {
-        Integer id = Integer.parseInt(pid.toString());
+        Integer id = Integer.parseInt(pid);
         service.delete(id);
         return "redirect:/product/list.do";
     }

@@ -14,9 +14,7 @@ class Userauditor : Serializable {
     var uauditor: String? = null//'审核人姓名'
 
 
-    constructor() {
-
-    }
+    constructor()
 
     constructor(uaid: Int?, userid: Int?, username: String, uauditorid: Int?, uauditor: String) {
 

@@ -1,7 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Certification
+import org.springframework.stereotype.Service
 
+@Service
 interface CertificationService {
     fun selectM(uid: Int?): String
     fun updateM(map: Map<String, Any>): Boolean

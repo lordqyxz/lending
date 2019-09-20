@@ -2,6 +2,9 @@ package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Borrowmoney
 
+import org.springframework.stereotype.Repository
+
+@Repository
 interface BorrowmoneyDao : BaseDao<Any, Borrowmoney> {
     // ygx
     fun pagingList(map: Map<String, Any>): List<Borrowmoney>

@@ -1,7 +1,7 @@
 package com.p2p.lending.entity
 
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 class Trade : Serializable {
     private var tID: Int? = null
@@ -13,7 +13,7 @@ class Trade : Serializable {
     var jytime: Date? = null
     var other: String? = null
 
-    constructor() {}
+    constructor()
 
     constructor(uID: Int?, uname: String, zname: String,
                 jymoney: String, what: String, jytime: Date, other: String) {

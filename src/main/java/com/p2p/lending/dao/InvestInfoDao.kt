@@ -1,8 +1,10 @@
 package com.p2p.lending.dao
 
-import org.apache.ibatis.annotations.Param
 import com.p2p.lending.entity.InvestInfo
+import org.apache.ibatis.annotations.Param
+import org.springframework.stereotype.Repository
 
+@Repository
 interface InvestInfoDao : BaseDao<Any, InvestInfo> {
 
     fun recordList(map: Map<String, Any>): List<InvestInfo>

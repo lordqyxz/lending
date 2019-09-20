@@ -1,7 +1,9 @@
 package com.p2p.lending.service
 
 import com.p2p.lending.entity.Notice
+import org.springframework.stereotype.Service
 
+@Service
 interface NoticeService {
 
     fun noticelist(ids: String): List<Notice>

@@ -1,11 +1,16 @@
 package com.p2p.lending.dao
 
 import com.p2p.lending.entity.Approveitem
+import org.springframework.stereotype.Repository
+
 
 /**
  * @Name: ApproveDao
  * @Description:认证项设置的Dao层
  */
+
+
+@Repository
 interface ApproveDao {
     /**
      * Description：根据条件获取认证项，如果条件为空则放回所有认证项
