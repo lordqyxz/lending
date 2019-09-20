@@ -1,11 +1,10 @@
 package com.p2p.lending.dao;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import com.p2p.lending.pojo.Borrowmoney;
+import com.p2p.lending.entity.Borrowmoney;
 
 public interface BaseDao<ID extends Object, Domain extends Object> {
 

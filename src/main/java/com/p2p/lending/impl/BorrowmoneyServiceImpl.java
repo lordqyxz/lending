@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.BorrowmoneyDao;
-import com.p2p.lending.pojo.Borrowmoney;
+import com.p2p.lending.entity.Borrowmoney;
 import com.p2p.lending.service.BorrowmoneyService;
 import com.p2p.lending.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

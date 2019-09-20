@@ -2,7 +2,7 @@ package com.p2p.lending.dao;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Limi;
+import com.p2p.lending.entity.Limi;
 
 public interface LimitDao {
 

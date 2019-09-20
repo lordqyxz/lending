@@ -2,10 +2,8 @@ package com.p2p.lending.service;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Borrowcord;
-import com.p2p.lending.pojo.Borrowmoney;
-import com.p2p.lending.pojo.InvestInfo;
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.InvestInfo;
+import com.p2p.lending.entity.Product;
 
 public interface BidService {
 

@@ -2,8 +2,7 @@ package com.p2p.lending.controller;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Biao;
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.Biao;
 import com.p2p.lending.service.BiaoService;
 import com.p2p.lending.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("biao")

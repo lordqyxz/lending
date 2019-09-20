@@ -15,7 +15,7 @@
             #{lprocesstime}
         )
     </insert>
-    <select id="findList" resultType="com.p2p.lending.pojo.Log" >
+    <select id="findList" resultType="com.p2p.lending.entity.Log" >
         SELECT
            laccount,
            logtype,

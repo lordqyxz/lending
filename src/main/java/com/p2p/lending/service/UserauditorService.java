@@ -3,7 +3,7 @@ package com.p2p.lending.service;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Userauditor;
+import com.p2p.lending.entity.Userauditor;
 
 public interface UserauditorService {
 		

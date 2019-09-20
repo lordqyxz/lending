@@ -5,8 +5,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import com.p2p.lending.pojo.Log;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Log;
 import com.p2p.lending.service.LoggerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -3,8 +3,8 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Borrowmoney;
-import com.p2p.lending.pojo.Creditlimit;
+import com.p2p.lending.entity.Borrowmoney;
+import com.p2p.lending.entity.Creditlimit;
 
 public interface CreditlimitDao extends BaseDao<Object, Borrowmoney> {
 

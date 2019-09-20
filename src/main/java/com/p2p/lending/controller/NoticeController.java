@@ -9,10 +9,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.p2p.lending.pojo.Notice;
+import com.p2p.lending.entity.Notice;
 import com.p2p.lending.service.NoticeService;
 import com.p2p.lending.service.UsersService;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

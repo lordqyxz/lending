@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.p2p.lending.dao.CertificationDao;
-import com.p2p.lending.pojo.Certification;
+import com.p2p.lending.entity.Certification;
 import com.p2p.lending.service.CertificationService;
 import org.springframework.stereotype.Service;
 

@@ -1,11 +1,10 @@
 package com.p2p.lending.dao;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import com.p2p.lending.pojo.InvestInfo;
+import com.p2p.lending.entity.InvestInfo;
 
 public interface InvestInfoDao extends BaseDao<Object,InvestInfo>{
 	public List<InvestInfo> recordList(Map<String, Object> map);

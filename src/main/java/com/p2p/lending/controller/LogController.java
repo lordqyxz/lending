@@ -2,7 +2,7 @@ package com.p2p.lending.controller;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Log;
+import com.p2p.lending.entity.Log;
 import com.p2p.lending.service.LoggerService;
 import com.p2p.lending.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

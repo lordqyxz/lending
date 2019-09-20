@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.DetailsDao">
 
-	<select id="detailslist" resultType="com.p2p.lending.pojo.Details"
+	<select id="detailslist" resultType="com.p2p.lending.entity.Details"
 		parameterType="int">
 		select *
 		from Details where 1=1 and pid=#{pid}
 	</select>
 
 
-	<insert id="detailsadd" parameterType="com.p2p.lending.pojo.Details">
+	<insert id="detailsadd" parameterType="com.p2p.lending.entity.Details">
 		insert into details (
 		dname,dcontent,
 		dtype,pid)
@@ -33,7 +33,7 @@
 		where
 		pid = #{pid}
 	</delete>
-	<insert id="create" parameterType="com.p2p.lending.pojo.Details">
+	<insert id="create" parameterType="com.p2p.lending.entity.Details">
 		insert into details
 		(dname,dcontent,
 		dtype,pid)

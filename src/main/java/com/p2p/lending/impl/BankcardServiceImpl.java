@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.BankcardDao;
-import com.p2p.lending.pojo.Bankcard;
+import com.p2p.lending.entity.Bankcard;
 import com.p2p.lending.service.BankcardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

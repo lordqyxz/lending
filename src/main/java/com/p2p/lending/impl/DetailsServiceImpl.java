@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import com.p2p.lending.dao.DetailsDao;
-import com.p2p.lending.pojo.Details;
+import com.p2p.lending.entity.Details;
 import com.p2p.lending.service.DetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

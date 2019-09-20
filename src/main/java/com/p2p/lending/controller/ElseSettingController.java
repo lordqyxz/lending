@@ -3,13 +3,11 @@ package com.p2p.lending.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import com.p2p.lending.pojo.Biao;
-import com.p2p.lending.pojo.Product;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Biao;
+import com.p2p.lending.entity.Product;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.BiaoService;
 import com.p2p.lending.service.ProductService;
 import com.p2p.lending.service.UsersService;

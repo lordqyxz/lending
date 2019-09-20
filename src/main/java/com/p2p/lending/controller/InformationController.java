@@ -9,12 +9,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.p2p.lending.pojo.Approveitem;
-import com.p2p.lending.pojo.Certification;
-import com.p2p.lending.pojo.Certifrecord;
-import com.p2p.lending.pojo.Dope;
-import com.p2p.lending.pojo.Poundage;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Approveitem;
+import com.p2p.lending.entity.Certification;
+import com.p2p.lending.entity.Certifrecord;
+import com.p2p.lending.entity.Dope;
+import com.p2p.lending.entity.Poundage;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.CertificationService;
 import com.p2p.lending.service.DopeService;
 import com.p2p.lending.service.InformationService;

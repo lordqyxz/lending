@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.ClapplyforDao;
-import com.p2p.lending.pojo.Clapplyfor;
+import com.p2p.lending.entity.Clapplyfor;
 import com.p2p.lending.service.ClapplyforService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

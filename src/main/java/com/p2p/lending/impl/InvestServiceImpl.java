@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.p2p.lending.dao.InvestInfoDao;
-import com.p2p.lending.pojo.InvestInfo;
+import com.p2p.lending.entity.InvestInfo;
 import com.p2p.lending.service.InvestService;
 import org.springframework.stereotype.Service;
 

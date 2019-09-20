@@ -3,9 +3,7 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.plaf.metal.OceanTheme;
-
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.Product;
 
 public interface ProductDao extends BaseDao<Object, Product> {
 

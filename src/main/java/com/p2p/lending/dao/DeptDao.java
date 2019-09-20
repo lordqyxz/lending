@@ -2,7 +2,7 @@ package com.p2p.lending.dao;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Dept;
+import com.p2p.lending.entity.Dept;
 
 public interface DeptDao {
 

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Dope;
+import com.p2p.lending.entity.Dope;
 import com.p2p.lending.service.DopeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

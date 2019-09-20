@@ -5,8 +5,7 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Approveitem;
-import com.p2p.lending.pojo.Withdrawal;
+import com.p2p.lending.entity.Withdrawal;
 
 
 public interface WithdrawalDao {

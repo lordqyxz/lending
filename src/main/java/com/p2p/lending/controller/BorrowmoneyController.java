@@ -1,22 +1,18 @@
 package com.p2p.lending.controller;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
-import com.p2p.lending.pojo.Biao;
-import com.p2p.lending.pojo.Borrowcord;
-import com.p2p.lending.pojo.Borrowmoney;
+import com.p2p.lending.entity.Biao;
+import com.p2p.lending.entity.Borrowcord;
+import com.p2p.lending.entity.Borrowmoney;
 import com.p2p.lending.service.BiaoService;
 import com.p2p.lending.service.BorrowcordService;
 import com.p2p.lending.service.BorrowmoneyService;
 import com.p2p.lending.util.BeanUtils;
-import com.p2p.lending.util.ZqUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

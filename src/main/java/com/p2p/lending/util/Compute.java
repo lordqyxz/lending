@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.Product;
 import com.p2p.lending.service.ProductService;
 
 /**

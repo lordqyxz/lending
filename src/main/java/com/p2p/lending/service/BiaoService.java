@@ -3,10 +3,7 @@ package com.p2p.lending.service;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Biao;
-import com.p2p.lending.pojo.Borrowmoney;
-
-import com.github.pagehelper.PageInfo;
+import com.p2p.lending.entity.Biao;
 
 public interface BiaoService {
 

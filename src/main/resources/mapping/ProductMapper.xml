@@ -8,7 +8,7 @@
 		pname, ptotalmoney, prange, puse,
 		pstate, picture, pproduce, pdesc, psafe
 	</sql>
-	<select id="get" resultType="com.p2p.lending.pojo.Product" parameterType="java.lang.Integer">
+	<select id="get" resultType="com.p2p.lending.entity.Product" parameterType="java.lang.Integer">
 		select
 		*
 		from product
@@ -42,7 +42,7 @@
 		#{pproduce}, #{pdesc},
 		#{psafe})
 	</insert>
-	<select id="findList" resultType="com.p2p.lending.pojo.Product">
+	<select id="findList" resultType="com.p2p.lending.entity.Product">
 		select
 		p.id,p.pmoney,p.pincome,p.ptime,b.bname as "biao.bname",b.id as
 		"biao.id" ,
@@ -57,7 +57,7 @@
 		</if>
 	</select>
 
-	<select id="myList" resultType="com.p2p.lending.pojo.Product"
+	<select id="myList" resultType="com.p2p.lending.entity.Product"
 		parameterType="map">
 		select * from product p where 1 = 1
 		<if test="biaoId != null and biaoId !=''">
@@ -122,19 +122,19 @@
 		where id = #{id}
 	</update>
 
-	<update id="updateProgres" parameterType="com.p2p.lending.pojo.Product">
+	<update id="updateProgres" parameterType="com.p2p.lending.entity.Product">
 		update product
 		set
 		progress = #{progress}
 		where id = #{id}
 	</update>
 
-	<update id="updateStatus" parameterType="com.p2p.lending.pojo.Product">
+	<update id="updateStatus" parameterType="com.p2p.lending.entity.Product">
 		UPDATE product SET
 		pstate =#{pstate}
 	</update>
 
-	<update id="setRateAndDeadline" parameterType="com.p2p.lending.pojo.Product">
+	<update id="setRateAndDeadline" parameterType="com.p2p.lending.entity.Product">
 		update product
 		set
 		pincome = #{pincome},ptime = #{ptime},pcount = #{pcount}

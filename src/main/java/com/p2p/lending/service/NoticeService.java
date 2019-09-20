@@ -2,7 +2,7 @@ package com.p2p.lending.service;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Notice;
+import com.p2p.lending.entity.Notice;
 
 public interface NoticeService {
 

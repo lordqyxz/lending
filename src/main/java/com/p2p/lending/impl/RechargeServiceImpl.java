@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.RechargeDao;
-import com.p2p.lending.pojo.Recharge;
+import com.p2p.lending.entity.Recharge;
 import com.p2p.lending.service.RechargeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

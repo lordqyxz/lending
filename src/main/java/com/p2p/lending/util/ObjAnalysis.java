@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Log;
+import com.p2p.lending.entity.Log;
 
 public class ObjAnalysis {
 	public static Map ConvertObjToMap(Object obj) {

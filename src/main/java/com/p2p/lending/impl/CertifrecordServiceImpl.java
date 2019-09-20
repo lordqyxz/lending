@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.CertifrecordDao;
-import com.p2p.lending.pojo.Certifrecord;
+import com.p2p.lending.entity.Certifrecord;
 import com.p2p.lending.service.CertifrecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

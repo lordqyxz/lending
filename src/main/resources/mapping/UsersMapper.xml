@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.UsersDao">
-	<resultMap id="BaseResultMap" type="com.p2p.lending.pojo.Users">
+	<resultMap id="BaseResultMap" type="com.p2p.lending.entity.Users">
 		<id column="uid" property="uid" jdbcType="INTEGER" />
 		<result column="unickname" property="unickname" jdbcType="VARCHAR" />
 		<result column="uname" property="uname" jdbcType="VARCHAR" />
@@ -32,12 +32,12 @@
 		select * from users where unickname =#{unickname}
 	</select>
 	<select id="byNameFindUsers" resultMap="BaseResultMap"
-		parameterType="com.p2p.lending.pojo.Users">
+		parameterType="com.p2p.lending.entity.Users">
 		select * from users where
 		unickname =
 		#{unickname,jdbcType=VARCHAR}
 	</select>
-	<insert id="insert" parameterType="com.p2p.lending.pojo.Users" keyProperty="uid" useGeneratedKeys="true">
+	<insert id="insert" parameterType="com.p2p.lending.entity.Users" keyProperty="uid" useGeneratedKeys="true">
 		insert into users (
 		unickname,upassword,
 		uphonenumber,

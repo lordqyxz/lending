@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.CertifrecordDao">
 
-  	<resultMap type="com.p2p.lending.pojo.Certifrecord" id="BaseResultMap">
+  	<resultMap type="com.p2p.lending.entity.Certifrecord" id="BaseResultMap">
   		<id column="crid" property="crid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
   		<result column="cruserid" property="cruserid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
   		<result column="crusername" property="crusername" javaType="java.lang.String" jdbcType="VARCHAR"/>

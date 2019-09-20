@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.p2p.lending.dao.BorrowcordDao;
-import com.p2p.lending.pojo.Borrowcord;
+import com.p2p.lending.entity.Borrowcord;
 import com.p2p.lending.service.BorrowcordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

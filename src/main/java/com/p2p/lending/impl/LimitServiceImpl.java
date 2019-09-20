@@ -3,7 +3,7 @@ package com.p2p.lending.impl;
 import java.util.List;
 
 import com.p2p.lending.dao.LimitDao;
-import com.p2p.lending.pojo.Limi;
+import com.p2p.lending.entity.Limi;
 import com.p2p.lending.service.LimitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

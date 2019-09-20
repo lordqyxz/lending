@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.BidDao" >
   <!--根据时间筛选到期标-->
-   <select id="todaoqi" resultType="com.p2p.lending.pojo.Product">
+   <select id="todaoqi" resultType="com.p2p.lending.entity.Product">
     SELECT * FROM product p WHERE 1=1 and p.pcount= date(sysdate()) and  pstate = '2'; 
   </select>
  
    <!--根据ID查询用户信息-->
-   <select id="seluesr" resultType="com.p2p.lending.pojo.Users" parameterType="int">
+   <select id="seluesr" resultType="com.p2p.lending.entity.Users" parameterType="int">
     SELECT p.uid,p.unickname,p.uname FROM users p WHERE p.uid= #{uid};
    </select>
   
@@ -18,12 +18,12 @@
     where id = #{id} 
   </update>
     <!--根据ID查询投资表的投资记录-->
-   <select id="totouzilist" resultType="com.p2p.lending.pojo.InvestInfo" parameterType="int">
+   <select id="totouzilist" resultType="com.p2p.lending.entity.InvestInfo" parameterType="int">
    	 SELECT * FROM investinfo p WHERE p.brrowid= #{id};
   </select>
   
   <!--根据ID查询余额-->
-  <select id="togetyue" resultType="com.p2p.lending.pojo.Certification" parameterType="int">
+  <select id="togetyue" resultType="com.p2p.lending.entity.Certification" parameterType="int">
    	 SELECT ctotalmoney FROM certification p WHERE 
     	p.cserial= #{uid};
   </select>
@@ -35,14 +35,14 @@
     where cserial = #{cserial} ;
   </update>
   <!--根据ID添加一条交易记入-->
-  <insert id="toaddtrade" parameterType="com.p2p.lending.pojo.Trade">
+  <insert id="toaddtrade" parameterType="com.p2p.lending.entity.Trade">
 	insert into trade (uid,uname,zname,jymoney,what,jytime,other)
    	values (#{uID},#{uname},#{zname},#{jymoney},#{what},#{jytime},#{other});
   </insert>
   
    <!--_____________筹款到期____________-->
    <!--根据时间筛选到期标-->
-   <select id="togetck" resultType="com.p2p.lending.pojo.Product">
+   <select id="togetck" resultType="com.p2p.lending.entity.Product">
     SELECT * FROM product p WHERE 1=1 and p.ptime= date(sysdate()) and p.pstate='1';
   </select> 
    
@@ -55,15 +55,15 @@
   
   
   <!--查询借款请求的数量-->
-  <select id="tosize" resultType="com.p2p.lending.pojo.Borrowmoney">
+  <select id="tosize" resultType="com.p2p.lending.entity.Borrowmoney">
     SELECT id FROM borrowmoney p WHERE 1=1 and p.bstate= '0'
   </select> 
   <!--查询提现请求的数量-->
-  <select id="tosizew" resultType="com.p2p.lending.pojo.Borrowmoney">
+  <select id="tosizew" resultType="com.p2p.lending.entity.Borrowmoney">
     SELECT wid FROM withdrawal p WHERE 1=1 and p.statu= '3'
   </select> 
   <!--查询10天内需要还款-->
-  <select id="tosizeb" resultType="com.p2p.lending.pojo.Borrowcord">
+  <select id="tosizeb" resultType="com.p2p.lending.entity.Borrowcord">
         SELECT boid FROM borrowcord p WHERE 1=1 and p.bdate &gt;= SYSDATE() and p.bdate &lt;= date_add(SYSDATE(), interval '10 0:00:00' day_second)
   </select> 
   

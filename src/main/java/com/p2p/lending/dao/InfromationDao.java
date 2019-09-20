@@ -3,9 +3,9 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Approveitem;
-import com.p2p.lending.pojo.Certifrecord;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Approveitem;
+import com.p2p.lending.entity.Certifrecord;
+import com.p2p.lending.entity.Users;
 
 public interface InfromationDao {
 	// 我的账户

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import com.p2p.lending.dao.EmployeeDao;
-import com.p2p.lending.pojo.Employee;
+import com.p2p.lending.entity.Employee;
 import com.p2p.lending.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

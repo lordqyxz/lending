@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.p2p.lending.pojo.Biao;
-import com.p2p.lending.pojo.Details;
-import com.p2p.lending.pojo.InvestInfo;
-import com.p2p.lending.pojo.Product;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Biao;
+import com.p2p.lending.entity.Details;
+import com.p2p.lending.entity.InvestInfo;
+import com.p2p.lending.entity.Product;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.BiaoService;
 import com.p2p.lending.service.DetailsService;
 import com.p2p.lending.service.InvestService;

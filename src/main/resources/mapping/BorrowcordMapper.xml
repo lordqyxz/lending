@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.BorrowcordDao">
 	
-	<select id="selborr" resultType="com.p2p.lending.pojo.Borrowcord" parameterType="int">
+	<select id="selborr" resultType="com.p2p.lending.entity.Borrowcord" parameterType="int">
 	    SELECT
 		* FROM borrowcord WHERE bid = #{wid}
 	</select>
@@ -13,7 +13,7 @@
 		where boid = #{wid}
 	</select>
 	
-	<insert id="borradd" parameterType="com.p2p.lending.pojo.Borrowcord">
+	<insert id="borradd" parameterType="com.p2p.lending.entity.Borrowcord">
 		insert into borrowcord(
 		bid,bdate,bstatue,
 		bcs)

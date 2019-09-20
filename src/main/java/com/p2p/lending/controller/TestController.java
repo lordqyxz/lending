@@ -1,23 +1,11 @@
 package com.p2p.lending.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.p2p.lending.pojo.Notice;
 import com.p2p.lending.service.BidService;
-import com.p2p.lending.service.NoticeService;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 

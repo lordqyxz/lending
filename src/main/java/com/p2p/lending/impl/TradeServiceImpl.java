@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.TradeDao;
-import com.p2p.lending.pojo.Trade;
+import com.p2p.lending.entity.Trade;
 import com.p2p.lending.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

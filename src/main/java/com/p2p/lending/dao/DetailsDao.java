@@ -2,8 +2,7 @@ package com.p2p.lending.dao;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Borrowmoney;
-import com.p2p.lending.pojo.Details;
+import com.p2p.lending.entity.Details;
 
 public interface DetailsDao extends  BaseDao<Object, Details>  {
 	public List<Details> detailslist(Integer ids);

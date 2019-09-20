@@ -2,7 +2,7 @@ package com.p2p.lending.service;
 
 import java.util.List;
 
-import com.p2p.lending.pojo.Details;
+import com.p2p.lending.entity.Details;
 
 public interface DetailsService {
 

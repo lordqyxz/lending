@@ -8,8 +8,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import com.p2p.lending.pojo.Certification;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Certification;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.CertificationService;
 import com.p2p.lending.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;

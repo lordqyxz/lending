@@ -1,10 +1,9 @@
 package com.p2p.lending.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.InvestInfo;
+import com.p2p.lending.entity.InvestInfo;
 
 public interface InvestService {
 	public int investA(InvestInfo ii);

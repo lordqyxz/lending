@@ -4,13 +4,13 @@
  <!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->
     <cache type="org.mybatis.caches.ehcache.EhcacheCache" />
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
-	<select id="get" resultType="com.p2p.lending.pojo.Biao" parameterType="java.lang.Integer">
+	<select id="get" resultType="com.p2p.lending.entity.Biao" parameterType="java.lang.Integer">
 		select
 		*
 		from biao
 		where id = #{id}
 	</select>
-	<select id="findList" resultType="com.p2p.lending.pojo.Biao">
+	<select id="findList" resultType="com.p2p.lending.entity.Biao">
 		select
 		*
 		from biao where 1=1

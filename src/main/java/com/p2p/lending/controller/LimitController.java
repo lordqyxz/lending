@@ -2,13 +2,12 @@ package com.p2p.lending.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.p2p.lending.pojo.Dept;
-import com.p2p.lending.pojo.Employee;
-import com.p2p.lending.pojo.Limi;
+import com.p2p.lending.entity.Dept;
+import com.p2p.lending.entity.Employee;
+import com.p2p.lending.entity.Limi;
 import com.p2p.lending.service.DeptService;
 import com.p2p.lending.service.EmployeeService;
 import com.p2p.lending.service.LimitService;

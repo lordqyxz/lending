@@ -3,7 +3,7 @@ package com.p2p.lending.util;
 import java.util.List;
 
 import com.p2p.lending.ount.BidCount;
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.Product;
 import com.p2p.lending.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

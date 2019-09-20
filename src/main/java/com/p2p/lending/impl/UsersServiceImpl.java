@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import com.p2p.lending.dao.UsersDao;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

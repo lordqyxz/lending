@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.apache.log4j.Logger;
-import com.p2p.lending.pojo.Dept;
+import com.p2p.lending.entity.Dept;
 import com.p2p.lending.service.DeptService;
 
 @Controller

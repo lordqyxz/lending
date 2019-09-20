@@ -9,8 +9,8 @@ import javax.annotation.Resource;
 
 import com.p2p.lending.dao.DetailsDao;
 import com.p2p.lending.dao.ProductDao;
-import com.p2p.lending.pojo.Details;
-import com.p2p.lending.pojo.Product;
+import com.p2p.lending.entity.Details;
+import com.p2p.lending.entity.Product;
 import com.p2p.lending.service.ProductService;
 import com.p2p.lending.util.TimeCompare;
 import org.springframework.beans.factory.annotation.Autowired;

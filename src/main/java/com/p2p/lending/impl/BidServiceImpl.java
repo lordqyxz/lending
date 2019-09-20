@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.BidDao;
-import com.p2p.lending.pojo.Certification;
-import com.p2p.lending.pojo.InvestInfo;
-import com.p2p.lending.pojo.Product;
-import com.p2p.lending.pojo.Trade;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Certification;
+import com.p2p.lending.entity.InvestInfo;
+import com.p2p.lending.entity.Product;
+import com.p2p.lending.entity.Trade;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.BidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

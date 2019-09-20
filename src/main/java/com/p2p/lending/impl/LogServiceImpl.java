@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.LogDao;
-import com.p2p.lending.pojo.Log;
+import com.p2p.lending.entity.Log;
 import com.p2p.lending.service.LoggerService;
 import com.p2p.lending.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

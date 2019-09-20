@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.WithdrawalDao;
-import com.p2p.lending.pojo.Withdrawal;
+import com.p2p.lending.entity.Withdrawal;
 import com.p2p.lending.service.WithdrawalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.UserauditorDao;
-import com.p2p.lending.pojo.Userauditor;
+import com.p2p.lending.entity.Userauditor;
 import com.p2p.lending.service.UserauditorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

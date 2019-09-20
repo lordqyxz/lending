@@ -3,10 +3,7 @@ package com.p2p.lending.service;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Borrowmoney;
-import com.p2p.lending.pojo.Product;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.p2p.lending.entity.Product;
 
 public interface ProductService {
 	public List<Product> findList(Map<String, Object> map);

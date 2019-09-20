@@ -6,9 +6,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.p2p.lending.dao.InfromationDao;
-import com.p2p.lending.pojo.Approveitem;
-import com.p2p.lending.pojo.Certifrecord;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Approveitem;
+import com.p2p.lending.entity.Certifrecord;
+import com.p2p.lending.entity.Users;
 import com.p2p.lending.service.InformationService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

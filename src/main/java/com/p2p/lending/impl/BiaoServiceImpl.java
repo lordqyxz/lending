@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.BiaoMapperDao;
-import com.p2p.lending.pojo.Biao;
+import com.p2p.lending.entity.Biao;
 import com.p2p.lending.service.BiaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

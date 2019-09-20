@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.ApproveDao;
-import com.p2p.lending.pojo.Approveitem;
+import com.p2p.lending.entity.Approveitem;
 import com.p2p.lending.service.ApproveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import com.p2p.lending.pojo.Users;
+import com.p2p.lending.entity.Users;
 
 public interface UsersService {
 

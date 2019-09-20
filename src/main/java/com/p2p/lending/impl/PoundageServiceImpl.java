@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.p2p.lending.dao.PoundageDao;
-import com.p2p.lending.pojo.Poundage;
+import com.p2p.lending.entity.Poundage;
 import com.p2p.lending.service.PoundageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

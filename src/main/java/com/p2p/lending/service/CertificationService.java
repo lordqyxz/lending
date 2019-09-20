@@ -2,7 +2,7 @@ package com.p2p.lending.service;
 
 import java.util.Map;
 
-import com.p2p.lending.pojo.Certification;
+import com.p2p.lending.entity.Certification;
 
 public interface CertificationService {
 	public String selectM(Integer uid);

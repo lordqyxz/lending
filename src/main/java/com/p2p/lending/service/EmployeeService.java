@@ -3,7 +3,7 @@ package com.p2p.lending.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import com.p2p.lending.pojo.Employee;
+import com.p2p.lending.entity.Employee;
 
 public interface EmployeeService {
 

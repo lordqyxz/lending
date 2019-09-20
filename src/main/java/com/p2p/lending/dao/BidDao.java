@@ -3,14 +3,14 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Borrowcord;
-import com.p2p.lending.pojo.Borrowmoney;
-import com.p2p.lending.pojo.Certification;
-import com.p2p.lending.pojo.InvestInfo;
-import com.p2p.lending.pojo.Product;
-import com.p2p.lending.pojo.Trade;
-import com.p2p.lending.pojo.Users;
-import com.p2p.lending.pojo.Withdrawal;
+import com.p2p.lending.entity.Borrowcord;
+import com.p2p.lending.entity.Borrowmoney;
+import com.p2p.lending.entity.Certification;
+import com.p2p.lending.entity.InvestInfo;
+import com.p2p.lending.entity.Product;
+import com.p2p.lending.entity.Trade;
+import com.p2p.lending.entity.Users;
+import com.p2p.lending.entity.Withdrawal;
 
 public interface BidDao {
 

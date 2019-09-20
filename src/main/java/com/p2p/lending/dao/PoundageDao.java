@@ -3,7 +3,7 @@ package com.p2p.lending.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.p2p.lending.pojo.Poundage;
+import com.p2p.lending.entity.Poundage;
 
 
 

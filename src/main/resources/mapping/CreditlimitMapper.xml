@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.dao.CreditlimitDao">
-	<resultMap type="com.p2p.lending.pojo.Creditlimit" id="BaseResultMap">
+	<resultMap type="com.p2p.lending.entity.Creditlimit" id="BaseResultMap">
 		<id column="clid" property="clid" javaType="java.lang.Integer" jdbcType="INTEGER"/>
 		<result column="cluserid" property="cluserid" javaType="java.lang.Integer" jdbcType="INTEGER" />
 		<result column="clusername" property="clusername" javaType="java.lang.String" jdbcType="VARCHAR" />

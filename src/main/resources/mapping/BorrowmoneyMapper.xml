@@ -8,7 +8,7 @@
 		brecommend,bleixing,beizhu1,beizhu2
 	</sql>
 
-	<select id="findList" resultType="com.p2p.lending.pojo.Borrowmoney">
+	<select id="findList" resultType="com.p2p.lending.entity.Borrowmoney">
 		SELECT
 		*
 		FROM Borrowmoney
@@ -30,7 +30,7 @@
 
 
 	<!-- ygx -->
-	<select id="pagingList" resultType="com.p2p.lending.pojo.Borrowmoney"
+	<select id="pagingList" resultType="com.p2p.lending.entity.Borrowmoney"
 		parameterType="map">
 		SELECT *
 		FROM Borrowmoney
@@ -80,7 +80,7 @@
 	<!-- <select id="recommendShow">首页显示固定条数的推荐项目 select * from Borrowmoney 
 		where brecommend </select> -->
 
-	<select id="get" resultType="com.p2p.lending.pojo.Borrowmoney"
+	<select id="get" resultType="com.p2p.lending.entity.Borrowmoney"
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
@@ -92,7 +92,7 @@
 		where
 		id = #{id}
 	</delete>
-	<insert id="create" parameterType="com.p2p.lending.pojo.Borrowmoney">
+	<insert id="create" parameterType="com.p2p.lending.entity.Borrowmoney">
 		insert into borrowmoney
 		(bserial, busername,
 		brelname, bpass, btype,
@@ -118,7 +118,7 @@
 		#{beizhu2}
 		)
 	</insert>
-	<update id="update" parameterType="com.p2p.lending.pojo.Borrowmoney">
+	<update id="update" parameterType="com.p2p.lending.entity.Borrowmoney">
 		update borrowmoney
 		<trim prefix="set" suffixOverrides=",">
 			<if test="bserial != null and bserial != '' ">
@@ -171,7 +171,7 @@
 	</update>
 
 	<!--周旗 -->
-	<insert id="toaddborr" parameterType="com.p2p.lending.pojo.Borrowmoney">
+	<insert id="toaddborr" parameterType="com.p2p.lending.entity.Borrowmoney">
 		insert into borrowmoney
 		(
 		bleixing,brelname,bpass,btitle,bmoney,bstate,brecommend,beizhu1,
@@ -187,18 +187,18 @@
 		#{beizhu1},
 		#{beizhu2})
 	</insert>
-	<select id="updhuankuan" resultType="com.p2p.lending.pojo.Borrowmoney">
+	<select id="updhuankuan" resultType="com.p2p.lending.entity.Borrowmoney">
 	    SELECT
 		borrowmoney.* FROM borrowmoney WHERE borrowmoney.bserial = 2
 	</select>
 	<!---->
-	<select id="borrowget" resultType="com.p2p.lending.pojo.Borrowmoney" parameterType="int">
+	<select id="borrowget" resultType="com.p2p.lending.entity.Borrowmoney" parameterType="int">
 	    SELECT
 		borrowmoney.* FROM borrowmoney WHERE borrowmoney.id = #{ids}
 	</select>
 	
 	<!-- hjy -->
-	<select id="selecthjy" resultType="com.p2p.lending.pojo.Borrowmoney" parameterType="map">
+	<select id="selecthjy" resultType="com.p2p.lending.entity.Borrowmoney" parameterType="map">
 	    select * from borrowmoney where 1=1
 	     limit #{l1},#{l2}
 	</select>

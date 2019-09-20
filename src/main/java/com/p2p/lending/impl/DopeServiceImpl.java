@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.p2p.lending.dao.DopeDao;
-import com.p2p.lending.pojo.Dope;
+import com.p2p.lending.entity.Dope;
 import com.p2p.lending.service.DopeService;
 import org.springframework.stereotype.Service;
 @Service
