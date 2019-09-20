@@ -2,8 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.1.8.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'idea'
+    id  'war'
 }
-apply plugin: 'io.spring.dependency-management'
+
+
 group = 'com.p2p'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -13,6 +16,10 @@ configurations {
     runtimeClasspath {
         extendsFrom developmentOnly
     }
+    all*.exclude module: 'spring-boot-starter-logging'
+    all*.exclude module: 'logback-classic'
+    all*.exclude module: 'log4j-over-slf4j'
+
 }
 
 repositories {
@@ -64,21 +71,24 @@ dependencies {
     //web
     implementation ('org.springframework.boot:spring-boot-starter-web' ){
         exclude module: 'spring-boot-starter-logging'
+
     }
     //jsp_support
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.24'
-    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    implementation group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.2.1'
     // JSTL标签类
-    implementation group: 'jstl', name: 'jstl', version: '1.2'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
+
+
 
     // 日志文件管理包
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starer-log4j2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.1.2.RELEASE'
+    compile('org.apache.logging.log4j:log4j-1.2-api')
     // 格式化对象，方便输出日志
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.1.41'
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.7'
-    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.7'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
     // 映射JSON
     implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
     // 上传组件包

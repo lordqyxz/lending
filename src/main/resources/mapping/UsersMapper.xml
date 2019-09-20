@@ -13,8 +13,8 @@
 		<result column="ureferrer" property="ureferrer" />
 		<result column="ureferrername" property="ureferrername"
 			jdbcType="VARCHAR" />
-		<result column="ucardid" property="ucardid" jdbcType="VARCHAR"></result>
-		<result column="uhead" property="uhead" jdbcType="VARCHAR"></result>
+		<result column="ucardid" property="ucardid" jdbcType="VARCHAR"/>
+		<result column="uhead" property="uhead" jdbcType="VARCHAR"/>
 		<result column="userpaytoid" property="userpaytoid" jdbcType="VARCHAR" />
 		<result column="ucertnumber" property="ucertnumber" jdbcType="VARCHAR" />
 		<result column="upassword" property="upassword" jdbcType="VARCHAR" />
@@ -33,7 +33,7 @@
 	</select>
 	<select id="byNameFindUsers" resultMap="BaseResultMap"
 		parameterType="com.p2p.lending.pojo.Users">
-		select * from Users where
+		select * from users where
 		unickname =
 		#{unickname,jdbcType=VARCHAR}
 	</select>
