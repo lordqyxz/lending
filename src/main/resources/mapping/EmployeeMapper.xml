@@ -17,18 +17,18 @@
 
 	</resultMap>
 	<select id="selectlike" resultMap="BaseResultMap" parameterType="String">
-		select * from Employee	where estatus=1 and ename like concat(concat('%',#{ename}),'%')
+		select * from employee	where estatus=1 and ename like concat(concat('%',#{ename}),'%')
 	</select>
 
 	<select id="findlist" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-		select * from Employee	where estatus=1
+		select * from employee	where estatus=1
 	</select>
 	<select id="toupd" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-		select * from Employee	where estatus=1 and eid = #{eid}
+		select * from employee	where estatus=1 and eid = #{eid}
 	</select>
 	<select id="empLogin" resultMap="BaseResultMap"
 		parameterType="com.p2p.lending.pojo.Employee" >
-		select * from Employee where
+		select * from employee where
 		ename = #{ename,jdbcType=VARCHAR}
 	</select>
 

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.jws.soap.SOAPBinding.Use;
 import javax.servlet.http.HttpSession;
 
 import com.p2p.lending.pojo.Certification;
@@ -100,7 +99,7 @@ public class UsersController {
 		Certificat.insert(cer);
 		model.addAttribute("unickname", unickname);
 		// 返回到注册成功界面
-		return "register1";
+		return "registerSuccess";
 	}
 	// 注册新用户 end
 
