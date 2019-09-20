@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface RechargeDao {
 
-    fun selectrc(map: Map<String, Any>): List<Recharge>
+    fun selectrc(map: Map<String, Any?>): List<Recharge>
 
-    fun selectcount(map: Map<String, Any>): Int
+    fun selectcount(map: Map<String, Any?>): Int
 
     fun selectall(): List<Recharge>
 

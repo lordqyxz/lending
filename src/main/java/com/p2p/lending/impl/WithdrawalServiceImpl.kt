@@ -18,16 +18,16 @@ open class WithdrawalServiceImpl : WithdrawalService {
     override fun withdrawallist(currpage: String, btn: String, findmap: Map<String, Any>): Map<String, Any> {
 
         val map = HashMap<String, Any>()
-        val m = HashMap<String, Any>()
-        val ma = HashMap<String, Any>()
+        val m = HashMap<String, Any?>()
+        val ma = HashMap<String, Any?>()
         val pagerow = 2//每页2行
         var currpages = 1//当前页
         var totalpage = 0//总页数
         ma["btn"] = btn
-        ma["wname"] = findmap["wname"]!!
-        ma["yyy"] = findmap["yyy"]!!
-        ma["yyyy"] = findmap["yyyy"]!!
-        ma["wstatu"] = findmap["wstatu"]!!
+        ma["wname"] = findmap["wname"]
+        ma["yyy"] = findmap["yyy"]
+        ma["yyyy"] = findmap["yyyy"]
+        ma["wstatu"] = findmap["wstatu"]
         val totalrow = withdrawalDao!!.withdrawalcount(ma)//总行数
         totalpage = (totalrow + pagerow - 1) / pagerow
         if (currpage != null && "" != currpage) {
@@ -44,10 +44,10 @@ open class WithdrawalServiceImpl : WithdrawalService {
         m["l1"] = l1
         m["l2"] = pagerow
         m["btn"] = btn
-        m["wname"] = findmap["wname"]!!
-        m["yyy"] = findmap["yyy"]!!
-        m["yyyy"] = findmap["yyyy"]!!
-        m["wstatu"] = findmap["wstatu"]!!
+        m["wname"] = findmap["wname"]
+        m["yyy"] = findmap["yyy"]
+        m["yyyy"] = findmap["yyyy"]
+        m["wstatu"] = findmap["wstatu"]
         val llist = withdrawalDao!!.withdrawallist(m)
         map["pagerow"] = pagerow
         map["currpages"] = currpages

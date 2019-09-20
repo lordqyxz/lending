@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface BankcardDao {
 
-    fun selectbc(map: Map<String, Any>): List<Bankcard>
+    fun selectbc(map: Map<String, Any?>): List<Bankcard>
 
-    fun bankcount(map: Map<String, Any>): Int
+    fun bankcount(map: Map<String, Any?>): Int
 }

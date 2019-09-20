@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface WithdrawalDao {
 
-    fun withdrawallist(map: Map<String, Any>): List<Withdrawal>
+    fun withdrawallist(map: Map<String, Any?>): List<Withdrawal>
 
-    fun withdrawalcount(ma: Map<String, Any>): Int
+    fun withdrawalcount(ma: Map<String, Any?>): Int
 
     fun selectallw(): List<Withdrawal>
 

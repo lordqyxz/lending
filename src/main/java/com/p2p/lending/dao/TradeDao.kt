@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TradeDao {
 
-    fun selecttd(map: Map<String, Any>): List<Trade>
+    fun selecttd(map: Map<String, Any?>): List<Trade>
 
-    fun tradecount(map: Map<String, Any>): Int
+    fun tradecount(map: Map<String, Any?>): Int
 
     fun insertT(td: Trade): Boolean
 
