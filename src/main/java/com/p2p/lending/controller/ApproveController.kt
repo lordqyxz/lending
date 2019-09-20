@@ -1,19 +1,19 @@
-package com.p2p.lending.controller;
+package com.p2p.lending.controller
 
-import com.p2p.lending.entity.*;
-import com.p2p.lending.service.*;
-import com.p2p.lending.util.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import com.p2p.lending.entity.*
+import com.p2p.lending.service.*
+import com.p2p.lending.util.BeanUtils
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.servlet.ModelAndView
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author chenqingshan
@@ -23,449 +23,441 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("approve")
-public class ApproveController {
-    String str = "WEB-INF/view/";
+class ApproveController {
+    internal var str = "WEB-INF/view/"
     @Autowired
-    private ApproveService approveService;
+    private val approveService: ApproveService? = null
 
     @Autowired
-    private UsersService usersService;
+    private val usersService: UsersService? = null
     @Autowired
-    private EmployeeService employeeService;
+    private val employeeService: EmployeeService? = null
     @Autowired
-    private CertifrecordService certifrecordService;
+    private val certifrecordService: CertifrecordService? = null
     @Autowired
-    private UserauditorService userauditorService;
+    private val userauditorService: UserauditorService? = null
     @Autowired
-    private InformationService informationService;
+    private val informationService: InformationService? = null
     @Autowired
-    private ClapplyforService clapplyforService;
+    private val clapplyforService: ClapplyforService? = null
     @Autowired
-    private CreditlimitService creditlimitService;
+    private val creditlimitService: CreditlimitService? = null
 
     @RequestMapping("traverseApproves")
-    private String traverseApproves(Model model, Approveitem ai,
-                                    @RequestParam(value = "currpage", required = false) String currpage) {
+    private fun traverseApproves(model: Model, ai: Approveitem,
+                                 @RequestParam(value = "currpage", required = false) currpage: String?): String {
 
-        int pagerow = 5;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
+        val pageRow = 5// 每页5行
+        var currPages = 1// 当前页
+        var totalPage: Int// 总页数
+        var totalRow: Int// 总行数
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("aiid", ai.getAiid());
-        parameters.put("ainame", ai.getAiname());
-        parameters.put("aitype", ai.getAitype());
-        parameters.put("aistate", ai.getAistate());
-        List<Approveitem> approvesall = approveService.queryApproves(parameters);
+        val parameters = HashMap<String, Any?>()
+        parameters["aiid"] = ai.aiid
+        parameters["ainame"] = ai.ainame
+        parameters["aitype"] = ai.aitype
+        parameters["aistate"] = ai.aistate
+        val approvesall = approveService!!.queryApproves(parameters)
 
-        totalrow = approvesall.size();// 获取总行数
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+        totalRow = approvesall.size// 获取总行数
+        if (currpage != null && "" != currpage) {
+            currPages = Integer.parseInt(currpage)
         }
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalPage = (totalRow + pageRow - 1) / pageRow
 
-        if (currpages < 1) {
-            currpages = 1;
+        if (currPages < 1) {
+            currPages = 1
         }
-        if (currpages > totalpage) {
-            currpages = totalpage;
+        if (currPages > totalPage) {
+            currPages = totalPage
         }
 
-        Integer candp = (currpages - 1) * pagerow;
-        parameters.put("pandc", pagerow);
-        parameters.put("candp", candp);
-        List<Approveitem> approves = approveService.queryApproves(parameters);
+        val candp = (currPages - 1) * pageRow
+        parameters["pandc"] = pageRow
+        parameters["candp"] = candp
+        val approves = approveService.queryApproves(parameters)
         // for (Approveitem approveitem : approves) {
         // System.out.println(approveitem.getApproveitemInfo());
         // }
 
-        model.addAttribute("approveitems", approves);
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
+        model.addAttribute("approveitems", approves)
+        model.addAttribute("totalrow", totalRow)
+        model.addAttribute("currpages", currPages)
+        model.addAttribute("totalpage", totalPage)
 
-        return str + "approvelist";
+        return str + "approvelist"
     }
 
     @RequestMapping("toaddApprove")
-    private String toaddApprove() {
+    private fun toaddApprove(): String {
 
-        return str + "approveadd";
+        return str + "approveadd"
     }
 
     @RequestMapping("addApprove")
-    private ModelAndView addApprove(Approveitem ai) {
+    private fun addApprove(ai: Approveitem): ModelAndView {
         // System.out.println("进来了abandonApprove
         // Approveitem=="+ai.getApproveitemInfo());
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("ainame", ai.getAiname());
-        parameters.put("aitype", ai.getAitype());
-        parameters.put("aistate", "1");
-        approveService.addApproves(parameters);
-        return new ModelAndView("redirect:traverseApproves.do");
+        val parameters = HashMap<String, Any?>()
+        parameters["ainame"] = ai.ainame
+        parameters["aitype"] = ai.aitype
+        parameters["aistate"] = "1"
+        approveService!!.addApproves(parameters)
+        return ModelAndView("redirect:traverseApproves.do")
     }
 
     @RequestMapping("toupdateApprove")
-    private String toupdateApprove(Approveitem ai, Model model) {
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("aiid", ai.getAiid());
-        parameters.put("ainame", ai.getAiname());
-        parameters.put("aitype", ai.getAitype());
-        parameters.put("aistate", ai.getAistate());
-        List<Approveitem> approvesall = approveService.queryApproves(parameters);
-        Approveitem approve = null;
+    private fun toupdateApprove(ai: Approveitem, model: Model): String {
+        val parameters = HashMap<String, Any?>()
+        parameters["aiid"] = ai.aiid
+        parameters["ainame"] = ai.ainame
+        parameters["aitype"] = ai.aitype
+        parameters["aistate"] = ai.aistate
+        val approvesall = approveService!!.queryApproves(parameters)
+        var approve: Approveitem?
         if (!approvesall.isEmpty()) {
-            approve = approvesall.get(0);
-            model.addAttribute("approve", approve);
+            approve = approvesall[0]
+            model.addAttribute("approve", approve)
         }
 
-        return str + "approveupdate";
+        return str + "approveupdate"
     }
 
     @RequestMapping("updateApprove")
-    private ModelAndView updateApprove(Approveitem ai) {
+    private fun updateApprove(ai: Approveitem): ModelAndView {
 
         // System.out.println("进来了abandonApprove aiid=="+ai.getAiid()+"
         // aistate=="+ai.getAistate());
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("aiid", ai.getAiid());
-        parameters.put("ainame", ai.getAiname());
-        parameters.put("aitype", ai.getAitype());
-        parameters.put("aistate", ai.getAistate());
-        approveService.updateApproves(parameters);
-        return new ModelAndView("redirect:traverseApproves.do");
+        val parameters = HashMap<String, Any?>()
+        parameters["aiid"] = ai.aiid
+        parameters["ainame"] = ai.ainame
+        parameters["aitype"] = ai.aitype
+        parameters["aistate"] = ai.aistate
+        approveService!!.updateApproves(parameters)
+        return ModelAndView("redirect:traverseApproves.do")
     }
     //认证项的管理 头部
-//==============================================================================
+    //==============================================================================
 
     //==============================================================================
     //新用户认真资料 头部
     @RequestMapping("newuserInfoList")
-    private String newuserInfoList(Model model) {
+    private fun newuserInfoList(model: Model): String {
         //查询所有新用户
-        List<Users> users = usersService.userList();
+        val users = usersService!!.userList().toMutableList()
 
-        List<Employee> employees = employeeService.findlist();
+        val employees = employeeService!!.findlist()
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
+        val parameters = HashMap<String, Any>()
         //查询出所有用户审核人
-        List<Userauditor> userauditors = userauditorService.queryUseraubitor(parameters);
+        val userauditors = userauditorService!!.queryUseraubitor(parameters)
 
         //System.out.println("userauditors.size==========================="+userauditors.size());
         //查询出所有用户的审核记录
-        List<Certifrecord> certifrecords = certifrecordService.queryCertifrecord(parameters);
-        List<Users> us = null;
-        if (userauditors != null) {
-            for (Userauditor userauditor : userauditors) {
-                for (Users u : users) {
-                    if (userauditor.getUserid() == u.getUid()) {
-                        users.remove(u);
-                        break;
-                    }
+        val certifrecords = certifrecordService!!.queryCertifrecord(parameters)
 
+        for (userauditor in userauditors) {
+            for (users1 in users) {
+                if (userauditor.userid === users1.uid) {
+                    users.remove(users1)
+                    break
                 }
-            }
 
+            }
         }
         //查询出未分配审核人1的积分，和待审核条数
 
-        List<Certifrecord> cr = null;
+        var cr: MutableList<Certifrecord>?
 
-        if (certifrecords != null) {
-            cr = new ArrayList<Certifrecord>();
+        cr = ArrayList()
 
-            for (Users u : users) {
-                Certifrecord cerrecord = new Certifrecord();
-                int integral = 0;
-                int ispass = 0;
-                for (Certifrecord c : certifrecords) {
-                    if (u.getUid() == c.getCruserid()) {
-                        if (c.getCrintegral() != null) {
-                            integral += c.getCrintegral();
-                        } else {
-                            integral += 0;
-                        }
-
-                        if (c.getCrispass().equals("1")) {
-                            ispass += 1;
-                        }
+        for (u in users) {
+            val cerrecord = Certifrecord()
+            var integral = 0
+            var ispass = 0
+            for (c in certifrecords) {
+                if (u.uid === c.cruserid) {
+                    if (c.crintegral != null) {
+                        integral += c.crintegral!!
+                    } else {
+                        integral += 0
                     }
 
+                    if (c.crispass == "1") {
+                        ispass += 1
+                    }
                 }
-                //System.out.println("uname="+u.getUnickname()+"  integral: "+integral+" ispass: "+ispass);
-                cerrecord.setCruserid(u.getUid());
-                cerrecord.setCrusername(u.getUnickname());
-                cerrecord.setCrintegral(integral);
-                cerrecord.setCheckpend(ispass);
-                cr.add(cerrecord);
 
             }
+            //System.out.println("uname="+u.getUnickname()+"  integral: "+integral+" ispass: "+ispass);
+            cerrecord.cruserid = u.uid
+            cerrecord.crusername = u.unickname
+            cerrecord.crintegral = integral
+            cerrecord.checkpend = ispass
+            cr.add(cerrecord)
 
         }
 
-        model.addAttribute("cr", cr);
-        model.addAttribute("users", users);
-        model.addAttribute("employees", employees);
-        return str + "anewuserinfolist";
+        model.addAttribute("cr", cr)
+        model.addAttribute("users", users)
+        model.addAttribute("employees", employees)
+        return str + "anewuserinfolist"
     }
 
 
     @RequestMapping("affirmCrauditor")
     @ResponseBody
-    public String affirmCrauditor(Userauditor ua) {
-        String code = "200";
+    fun affirmCrauditor(ua: Userauditor): String {
+        var code = "200"
         //System.out.println("进来了affirmCrauditor  auditorid=="+ua.getUauditorid()+"  auditor=="+ua.getUauditor()+" userid=="+ua.getUserid()+"  username=="+ua.getUsername());
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("userid", ua.getUserid());
-        parameters.put("username", ua.getUsername());
-        parameters.put("uauditorid", ua.getUauditorid());
-        parameters.put("uauditor", ua.getUauditor());
-        int addcode = userauditorService.addUserauditor(parameters);
+        val parameters = HashMap<String, Any?>()
+        parameters["userid"] = ua.userid
+        parameters["username"] = ua.username
+        parameters["uauditorid"] = ua.uauditorid
+        parameters["uauditor"] = ua.uauditor
+        val addcode = userauditorService!!.addUserauditor(parameters)
         if (addcode <= 0) {
-            code = "400";
+            code = "400"
         } else {
-            Map<String, Object> parameters1 = new HashMap<String, Object>();
-            parameters1.put("crauditor", ua.getUauditor());
-            parameters1.put("cruserid", ua.getUserid());
-            int updatecode = certifrecordService.updateCertifrecord(parameters1);
+            val parameters1 = HashMap<String, Any?>()
+            parameters1["crauditor"] = ua.uauditor
+            parameters1["cruserid"] = ua.userid
+
         }
 
 
-        return code;
+        return code
     }
     //新用户认证资料 end
-//==============================================================================
+    //==============================================================================
 
     //==============================================================================
     //资料认证
     @RequestMapping("basicInfoApprove")
-    private String basicInfoaudit(Model model, @RequestParam(value = "currpage", required = false) String currpage) {
-        int pagerow = 10;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+    private fun basicInfoaudit(model: Model, @RequestParam(value = "currpage", required = false) currpage: String?): String {
+        val pagerow = 10// 每页5行
+        var currpages = 1// 当前页
+        var totalpage: Int// 总页数
+        var totalrow: Int// 总行数
+        if (currpage != null && "" != currpage) {
+            currpages = Integer.parseInt(currpage)
         }
-        List<Users> user1 = usersService.userList();
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        List<Userauditor> userauditors = userauditorService.queryUseraubitor(parameters);
-        totalrow = user1.size();// 获取总行数
+        val user1 = usersService!!.userList()
+        val parameters = HashMap<String, Any>()
+        val userauditors = userauditorService!!.queryUseraubitor(parameters)
+        totalrow = user1.size// 获取总行数
 
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalpage = (totalrow + pagerow - 1) / pagerow
 
         if (currpages < 1) {
-            currpages = 1;
+            currpages = 1
         }
 
         if (currpages > totalpage) {
             if (totalpage != 0) {
-                currpages = totalpage;
+                currpages = totalpage
             } else {
-                currpages = 1;
+                currpages = 1
             }
         }
-        Integer candp = (currpages - 1) * pagerow;
-        Integer pandc = pagerow;
-        parameters.put("candp", candp);
-        parameters.put("pandc", pandc);
-        List<Users> users = usersService.queryUser(parameters);
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
-        model.addAttribute("users", users);
-        model.addAttribute("ua", userauditors);
-        return str + "basicinfoList";
+        val candp = (currpages - 1) * pagerow
+        parameters["candp"] = candp
+        parameters["pandc"] = pagerow
+        val users = usersService.queryUser(parameters)
+        model.addAttribute("totalrow", totalrow)
+        model.addAttribute("currpages", currpages)
+        model.addAttribute("totalpage", totalpage)
+        model.addAttribute("users", users)
+        model.addAttribute("ua", userauditors)
+        return str + "basicinfoList"
     }
 
     @RequestMapping("infoAuditByuser")
-    private String infoAuditByuser(Model model, Certifrecord cr) {
+    private fun infoAuditByuser(model: Model, cr: Certifrecord): String {
         //System.out.println("userid==="+cr.getCruserid());
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        List<Userauditor> userauditors = userauditorService.queryUseraubitor(parameters);
-        parameters.put("cruserid", cr.getCruserid());
-        parameters.put("id", cr.getCruserid());
-        parameters.put("craiid", cr.getCraiid());
-        List<Certifrecord> certifrecords = certifrecordService.queryCertifrecord(parameters);
-        Users user = informationService.query(parameters);
+        val parameters = HashMap<String, Any?>()
+        val userauditors = userauditorService!!.queryUseraubitor(parameters)
+        parameters["cruserid"] = cr.cruserid
+        parameters["id"] = cr.cruserid!!
+        parameters["craiid"] = cr.craiid
+        val certifrecords = certifrecordService!!.queryCertifrecord(parameters)
+        val user = informationService!!.query(parameters)
 
-        List<Approveitem> approvesall = approveService.queryApproves(parameters);
+        val approvesall = approveService!!.queryApproves(parameters)
         //System.out.println("user==="+user.getUname()+"  approvesall==="+approvesall.size()+"  certifrecords==="+certifrecords.size());
-        model.addAttribute("certrecod", certifrecords);
-        model.addAttribute("user", user);
-        model.addAttribute("approve", approvesall);
-        model.addAttribute("code", approvesall.size());
-        model.addAttribute("useraud", userauditors);
-        model.addAttribute("craiid", cr.getCraiid());
-        return str + "basicuserapprove";
+        model.addAttribute("certrecod", certifrecords)
+        model.addAttribute("user", user)
+        model.addAttribute("approve", approvesall)
+        model.addAttribute("code", approvesall.size)
+        model.addAttribute("useraud", userauditors)
+        model.addAttribute("craiid", cr.craiid)
+        return str + "basicuserapprove"
     }
 
     @RequestMapping("updateInfoAudit")
     @ResponseBody
-    private String updateInfoAudit(Certifrecord cr) {
-        String code = "200";
+    private fun updateInfoAudit(cr: Certifrecord): String {
+        var code = "200"
         //"cruserid":userid,"craiid":crtype,"crviewpoint":viewpoint,"crintegral":integral,"crispass":ispass,"crauditor":auditor
         //System.out.println("cruserid=="+cr.getCruserid()+"   craiid=="+cr.getCraiid()+"   crviewpoint=="+cr.getCrviewpoint()+"   crintegral=="+cr.getCrintegral()+"   crispass=="+cr.getCrispass()+"   crauditor=="+cr.getCrauditor());
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        Date date = new Date();
-        parameters.put("cruserid", cr.getCruserid());
-        parameters.put("craiid", cr.getCraiid());
-        parameters.put("crviewpoint", cr.getCrviewpoint());
-        parameters.put("crintegral", cr.getCrintegral());
-        parameters.put("crispass", cr.getCrispass());
-        parameters.put("crauditor", cr.getCrauditor());
-        parameters.put("crdate", date);
-        int updateCode = certifrecordService.updateCertifrecord(parameters);
+        val parameters = HashMap<String, Any?>()
+        val date = Date()
+        parameters["cruserid"] = cr.cruserid
+        parameters["craiid"] = cr.craiid
+        parameters["crviewpoint"] = cr.crviewpoint
+        parameters["crintegral"] = cr.crintegral
+        parameters["crispass"] = cr.crispass
+        parameters["crauditor"] = cr.crauditor
+        parameters["crdate"] = date
+        val updateCode = certifrecordService!!.updateCertifrecord(parameters)
         if (updateCode <= 0) {
-            code = "400";
+            code = "400"
         }
-        return code;
+        return code
     }
 
     @RequestMapping("approveStatistics")
-    private String approveStatistics(Model model, Certifrecord cr, @RequestParam(value = "currpage", required = false) String currpage) {
-        int pagerow = 5;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+    private fun approveStatistics(model: Model, cr: Certifrecord, @RequestParam(value = "currpage", required = false) currpage: String?): String {
+        val pagerow = 5// 每页5行
+        var currpages = 1// 当前页
+        var totalpage: Int// 总页数
+        var totalrow: Int// 总行数
+        if (currpage != null && "" != currpage) {
+            currpages = Integer.parseInt(currpage)
         }
-        List<Users> users = usersService.userList();
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        List<Approveitem> approvesall = approveService.queryApproves(parameters);
+        val users = usersService!!.userList()
+        val parameters = HashMap<String, Any?>()
+        val approvesall = approveService!!.queryApproves(parameters)
 
-        parameters.put("crusername", cr.getCrusername());
-        parameters.put("craiid", cr.getCraiid());
-        List<Certifrecord> crsize = certifrecordService.queryCertifrecord(parameters);
-        totalrow = crsize.size();// 获取总行数
+        parameters["crusername"] = cr.crusername
+        parameters["craiid"] = cr.craiid
+        val crsize = certifrecordService!!.queryCertifrecord(parameters)
+        totalrow = crsize.size// 获取总行数
 
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalpage = (totalrow + pagerow - 1) / pagerow
 
         if (currpages < 1) {
-            currpages = 1;
+            currpages = 1
         }
 
         if (currpages > totalpage) {
             if (totalpage != 0) {
-                currpages = totalpage;
+                currpages = totalpage
             } else {
-                currpages = 1;
+                currpages = 1
             }
         }
 
 
-        Integer candp = (currpages - 1) * pagerow;
-        parameters.put("pandc", pagerow);
-        parameters.put("candp", candp);
+        val candp = (currpages - 1) * pagerow
+        parameters["pandc"] = pagerow
+        parameters["candp"] = candp
 
-        List<Certifrecord> certifrecords = certifrecordService.queryCertifrecord(parameters);
-        model.addAttribute("users", users);
-        model.addAttribute("approves", approvesall);
-        model.addAttribute("cr", certifrecords);
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
-        model.addAttribute("username", cr.getCrusername());
-        model.addAttribute("apid", cr.getCraiid());
+        val certifrecords = certifrecordService.queryCertifrecord(parameters)
+        model.addAttribute("users", users)
+        model.addAttribute("approves", approvesall)
+        model.addAttribute("cr", certifrecords)
+        model.addAttribute("totalrow", totalrow)
+        model.addAttribute("currpages", currpages)
+        model.addAttribute("totalpage", totalpage)
+        model.addAttribute("username", cr.crusername)
+        model.addAttribute("apid", cr.craiid)
         //System.out.println("userssize=="+users.size()+"  certifrecordssize=="+certifrecords.size()+"  approvesallsize=="+approvesall.size());
-        return str + "approvestatistics";
+        return str + "approvestatistics"
     }
     //资料认证 end
-//============================================================================================================================================
+    //============================================================================================================================================
 
     //============================================================================================================================================
     //信用额度申请
     @RequestMapping("limitApplyfor")
-    private String limitApplyfor(Model model,
-                                 @RequestParam(value = "currpage", required = false) String currpage,
-                                 @RequestParam(value = "mindate", required = false) String mindate,
-                                 @RequestParam(value = "clpuname", required = false) String clpuname,
-                                 @RequestParam(value = "maxdate", required = false) String maxdate,
-                                 @RequestParam(value = "clpstate", required = false) String clpstate) {
-        int pagerow = 10;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = null;
-        Date date2 = null;
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+    private fun limitApplyfor(model: Model,
+                              @RequestParam(value = "currpage", required = false) currpage: String?,
+                              @RequestParam(value = "mindate", required = false) mindate: String?,
+                              @RequestParam(value = "clpuname", required = false) clpuname: String,
+                              @RequestParam(value = "maxdate", required = false) maxdate: String?,
+                              @RequestParam(value = "clpstate", required = false) clpstate: String): String {
+        val pagerow = 10// 每页5行
+        var currpages = 1// 当前页
+        var totalpage: Int// 总页数
+        var totalrow: Int// 总行数
+        val format = SimpleDateFormat("yyyy-MM-dd")
+        var date1: Date? = null
+        var date2: Date? = null
+        if (currpage != null && "" != currpage) {
+            currpages = Integer.parseInt(currpage)
         }
         try {
-            if (mindate != null && !mindate.equals("")) {
-                date1 = format.parse(mindate);
+            if (mindate != null && mindate != "") {
+                date1 = format.parse(mindate)
             }
-            if (maxdate != null && !maxdate.equals("")) {
-                date2 = format.parse(maxdate);
+            if (maxdate != null && maxdate != "") {
+                date2 = format.parse(maxdate)
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (e: ParseException) {
+            e.printStackTrace()
         }
 
-        Map<String, Object> pm = new HashMap<String, Object>();
-        List<Certifrecord> certifrecords = certifrecordService.queryCertifrecord(pm);
-        pm.put("clpuname", clpuname);
-        pm.put("maxdate", date2);
-        pm.put("mindate", date1);
-        pm.put("clpstate", clpstate);
-        List<Clapplyfor> sizes = clapplyforService.queryClapplyfors(pm);
+        val pm = HashMap<String, Any?>()
+        val certifrecords = certifrecordService!!.queryCertifrecord(pm)
+        pm["clpuname"] = clpuname
+        pm["maxdate"] = date2
+        pm["mindate"] = date1
+        pm["clpstate"] = clpstate
+        val sizes = clapplyforService!!.queryClapplyfors(pm)
 
-        totalrow = sizes.size();// 获取总行数
+        totalrow = sizes.size// 获取总行数
 
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalpage = (totalrow + pagerow - 1) / pagerow
 
         if (currpages < 1) {
-            currpages = 1;
+            currpages = 1
         }
 
         if (currpages > totalpage) {
             if (totalpage != 0) {
-                currpages = totalpage;
+                currpages = totalpage
             } else {
-                currpages = 1;
+                currpages = 1
             }
         }
 
-        Integer candp = (currpages - 1) * pagerow;
-        pm.put("pandc", pagerow);
-        pm.put("candp", candp);
-        List<Clapplyfor> clapplyfors = clapplyforService.queryClapplyfors(pm);
-        model.addAttribute("cr", certifrecords);
-        model.addAttribute("cps", clapplyfors);
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
-        model.addAttribute("maxdate", maxdate);
-        model.addAttribute("clpuname", clpuname);
-        model.addAttribute("mindate", mindate);
-        model.addAttribute("clpstate", clpstate);
+        val candp = (currpages - 1) * pagerow
+        pm["pandc"] = pagerow
+        pm["candp"] = candp
+        val clapplyfors = clapplyforService.queryClapplyfors(pm)
+        model.addAttribute("cr", certifrecords)
+        model.addAttribute("cps", clapplyfors)
+        model.addAttribute("totalrow", totalrow)
+        model.addAttribute("currpages", currpages)
+        model.addAttribute("totalpage", totalpage)
+        model.addAttribute("maxdate", maxdate)
+        model.addAttribute("clpuname", clpuname)
+        model.addAttribute("mindate", mindate)
+        model.addAttribute("clpstate", clpstate)
         //System.out.println("进来了========================================================clapplyfors=="+clapplyfors.size());
 
-        return str + "limitapplyforlist";
+        return str + "limitapplyforlist"
 
     }
 
     @RequestMapping("applyforApprove")
     @ResponseBody
-    private String applyforApprove(Clapplyfor ca) {
-        String code = "200";
-        int updateCode = 0;
-        updateCode = clapplyforService.updateClapplyforState(BeanUtils.INSTANCE.toMap(ca));
+    private fun applyforApprove(ca: Clapplyfor): String {
+        var code = "200"
+        var  updateCode = clapplyforService!!.updateClapplyforState(BeanUtils.toMap(ca)!!)
         //System.out.println("clpid=="+ca.getClpid()+"   clpubcid=="+ca.getClpubcid()+"   clpporiginal=="+ca.getClpporiginal()+"   clpf=="+ca.getClpf()+"   clpstate=="+ca.getClpstate());
-        if (ca.getClpstate().equals("1")) {//审核通过，修改申请表状态，增加信用额度
+        if (ca.clpstate == "1") {//审核通过，修改申请表状态，增加信用额度
 
-            Creditlimit creditlimit = new Creditlimit();
-            creditlimit.setCllimit(ca.getClpporiginal() + ca.getClpf());
-            creditlimit.setCrbankcard(ca.getClpubcid());
-            int code1 = creditlimitService.updateCreditlimit(BeanUtils.INSTANCE.toMap(creditlimit));
+            val creditlimit = Creditlimit()
+            creditlimit.cllimit = ca.clpporiginal!! + ca.clpf!!
+            creditlimit.crbankcard = ca.clpubcid
+
         }
         if (updateCode <= 0) {
-            code = "400";
+            code = "400"
         }
-        return code;
+        return code
     }
 
 }

@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.p2p.lending.repository.UsersDao">
-	<resultMap id="BaseResultMap" type="com.p2p.lending.entity.Users">
-		<id column="uid" property="uid" jdbcType="INTEGER" />
-		<result column="unickname" property="unickname" jdbcType="VARCHAR" />
-		<result column="uname" property="uname" jdbcType="VARCHAR" />
-		<result column="umailbox" property="umailbox" jdbcType="VARCHAR" />
-		<result column="uphonenumber" property="uphonenumber" jdbcType="VARCHAR" />
-		<result column="uregisterdate" property="uregisterdate" />
-		<result column="uflip" property="uflip" jdbcType="VARCHAR" />
-		<result column="ufldate" property="ufldate" />
-		<result column="ureferrer" property="ureferrer" />
-		<result column="ureferrername" property="ureferrername"
-			jdbcType="VARCHAR" />
-		<result column="ucardid" property="ucardid" jdbcType="VARCHAR"/>
-		<result column="uhead" property="uhead" jdbcType="VARCHAR"/>
-		<result column="userpaytoid" property="userpaytoid" jdbcType="VARCHAR" />
-		<result column="ucertnumber" property="ucertnumber" jdbcType="VARCHAR" />
-		<result column="upassword" property="upassword" jdbcType="VARCHAR" />
-		<result column="upwd_zd" property="upwd_zd" jdbcType="VARCHAR" />
+    <resultMap id="BaseResultMap" type="com.p2p.lending.entity.Users">
+        <id column="uid" property="uid" jdbcType="INTEGER"/>
+        <result column="unickname" property="unickname" jdbcType="VARCHAR"/>
+        <result column="uname" property="uname" jdbcType="VARCHAR"/>
+        <result column="umailbox" property="umailbox" jdbcType="VARCHAR"/>
+        <result column="uphonenumber" property="uphonenumber" jdbcType="VARCHAR"/>
+        <result column="uregisterdate" property="uregisterdate"/>
+        <result column="uflip" property="uflip" jdbcType="VARCHAR"/>
+        <result column="ufldate" property="ufldate"/>
+        <result column="ureferrer" property="ureferrer"/>
+        <result column="ureferrername" property="ureferrername" jdbcType="VARCHAR"/>
+        <result column="ucardid" property="ucardid" jdbcType="VARCHAR"/>
+        <result column="uhead" property="uhead" jdbcType="VARCHAR"/>
+        <result column="userpaytoid" property="userpaytoid" jdbcType="VARCHAR"/>
+        <result column="ucertnumber" property="ucertnumber" jdbcType="VARCHAR"/>
+        <result column="upassword" property="upassword" jdbcType="VARCHAR"/>
+        <result column="upwd_zd" property="upwd_zd" jdbcType="VARCHAR"/>
 
-	</resultMap>
+    </resultMap>
 
-	<select id="userList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="userList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select * from users
 	</select>
-	<select id="queryUserslimits" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="queryUserslimits" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select * from users limit #{candp},#{pandc}
 	</select>
-	<select id="queryUserslimitss" resultMap="BaseResultMap" parameterType="String">
+    <select id="queryUserslimitss" resultMap="BaseResultMap" parameterType="String">
 		select * from users where unickname =#{unickname}
 	</select>
-	<select id="byNameFindUsers" resultMap="BaseResultMap"
-		parameterType="com.p2p.lending.entity.Users">
+    <select id="byNameFindUsers" resultMap="BaseResultMap"
+            parameterType="com.p2p.lending.entity.Users">
 		select * from users where
 		unickname =
 		#{unickname,jdbcType=VARCHAR}
 	</select>
-	<insert id="insert" parameterType="com.p2p.lending.entity.Users" keyProperty="uid" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.p2p.lending.entity.Users" keyProperty="uid" useGeneratedKeys="true">
 		insert into users (
 		unickname,upassword,
 		uphonenumber,
@@ -46,11 +45,11 @@
 		#{unickname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR},
 		#{uphonenumber,jdbcType=VARCHAR},sysdate())
 	</insert>
-	<select id="queryUser" resultMap="BaseResultMap"
-		parameterType="map">
-			select * from users
-			 <if test="candp !=null and pandc !=null">
-		 		limit #{candp},#{pandc}
-			</if>
-		</select>
+    <select id="queryUser" resultMap="BaseResultMap"
+            parameterType="map">
+        select * from users
+        <if test="candp !=null and pandc !=null">
+            limit #{candp},#{pandc}
+        </if>
+    </select>
 </mapper>

@@ -16,19 +16,19 @@ open interface ApproveService {
      *
      * @return List
      */
-    fun queryApproves(map: Map<String, Any>): List<Approveitem>
+    fun queryApproves(map: Map<String, Any?>): List<Approveitem>
 
     /**
      * Description锛氭坊鍔犳柊璁よ瘉椤�
      *
      * @param map
      */
-    fun addApproves(map: Map<String, Any>)
+    fun addApproves(map: Map<String, Any?>)
 
     /**
      * Description锛氫慨鏀硅璇侀」
      *
      * @param map
      */
-    fun updateApproves(map: Map<String, Any>)
+    fun updateApproves(map: Map<String, Any?>)
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 @Service
 interface UserauditorService {
 
-    fun queryUseraubitor(map: Map<String, Any>): List<Userauditor>
+    fun queryUseraubitor(map: Map<String, Any?>): List<Userauditor>
 
-    fun addUserauditor(map: Map<String, Any>): Int
+    fun addUserauditor(map: Map<String, Any?>): Int
 }

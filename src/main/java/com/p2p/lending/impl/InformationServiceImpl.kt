@@ -16,7 +16,7 @@ open class InformationServiceImpl : InformationService {
     @Resource
     private val dao: InfromationDao? = null
 
-    override fun query(map: Map<String, Any>): Users {
+    override fun query(map: Map<String, Any?>): Users {
         return dao!!.query(map)
     }
 

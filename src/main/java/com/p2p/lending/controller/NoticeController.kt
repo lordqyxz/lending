@@ -1,32 +1,31 @@
-package com.p2p.lending.controller;
+package com.p2p.lending.controller
 
-import com.p2p.lending.entity.Notice;
-import com.p2p.lending.service.NoticeService;
-import com.p2p.lending.service.UsersService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import com.p2p.lending.entity.Notice
+import com.p2p.lending.service.NoticeService
+import com.p2p.lending.service.UsersService
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
 
-import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import javax.annotation.Resource
+import javax.servlet.ServletContext
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+import java.io.File
+import java.io.IOException
 
 /**
  * @author 周旗 2017-2-23 10:19:37 网站消息通知控制层
  */
 @Controller
 @RequestMapping("notice")
-public class NoticeController {
+class NoticeController {
     @Resource
-    private NoticeService noticeService;
+    private val noticeService: NoticeService? = null
     @Resource
-    private UsersService uService;
+    private val uService: UsersService? = null
 
     // @RequestMapping("tohoutai")
     // public String tohoutai(){
@@ -36,198 +35,195 @@ public class NoticeController {
 
     // 去后台添加页面
     @RequestMapping("toadd")
-    public String tohoutai() {
+    fun tohoutai(): String {
 
-        return "WEB-INF/view/noticeadd";
+        return "WEB-INF/view/noticeadd"
 
     }
 
     // 去添加首页图片
     @RequestMapping("addtupian")
-    public String addtupian() {
+    fun addtupian(): String {
 
-        return "WEB-INF/view/noticeaddtupian";
+        return "WEB-INF/view/noticeaddtupian"
 
     }
 
     //sss
     // 查询首页图片
     @RequestMapping("toaddlisttupian")
-    public String toaddlisttupian(Model model, String ids) {
-        model.addAttribute("list", noticeService.noticelist(ids));
-        return "WEB-INF/view/noticeaddlisttupian";
+    fun toaddlisttupian(model: Model, ids: String): String {
+        model.addAttribute("list", noticeService!!.noticelist(ids))
+        return "WEB-INF/view/noticeaddlisttupian"
     }
 
     // 查询通知
     @RequestMapping("toaddlist")
-    public String toaddlist() {
+    fun toaddlist(): String {
 
-        return "WEB-INF/view/noticeaddlist";
+        return "WEB-INF/view/noticeaddlist"
     }
 
 
     @RequestMapping("nottop")
-    public String nottop(HttpServletRequest request, @RequestParam(value = "ids") Integer ids, @RequestParam(value = "isd") Integer isd) {
-        noticeService.noticshiji(ids);
-        jiazai(request);
+    fun nottop(request: HttpServletRequest, @RequestParam(value = "ids") ids: Int?, @RequestParam(value = "isd") isd: Int?): String {
+        noticeService!!.noticshiji(ids)
+        jiazai(request)
 
-        if (6 == isd) {
-            return "redirect:toaddlisttupian.do?ids=6";
-        }
+        return if (6 == isd) {
+            "redirect:toaddlisttupian.do?ids=6"
+        } else "redirect:notlists.do?ids=" + isd!!
 
 
-        return "redirect:notlists.do?ids=" + isd;
     }
 
     // 前台(list页面)
     @RequestMapping("notlist")
-    public String notlist(Model model,
-                          @RequestParam(value = "ids", required = false) String ids) {
-        model.addAttribute("list", noticeService.noticelist(ids));
-        model.addAttribute("idss", ids + "");
-        if ("3".equals(ids)) {
-            return "informgltd";
-        } else if ("4".equals(ids)) {
-            return "informhzhb";
-        } else if ("5".equals(ids)) {
-            return "informtdfc";
+    fun notlist(model: Model,
+                @RequestParam(value = "ids", required = false) ids: String): String {
+        model.addAttribute("list", noticeService!!.noticelist(ids))
+        model.addAttribute("idss", ids + "")
+        if ("3" == ids) {
+            return "informgltd"
+        } else if ("4" == ids) {
+            return "informhzhb"
+        } else if ("5" == ids) {
+            return "informtdfc"
         }
-        return "inform";
+        return "inform"
     }
 
     // 后台查询
     @RequestMapping("notlists")
     // public String notlists(Model model) {
-    public String notlists(HttpServletRequest request, Model model, String ids) {
-        List list = noticeService.noticelist(ids);
-        model.addAttribute("list", list);
-        jiazai(request);
-        return "WEB-INF/view/noticeaddlist";
+    fun notlists(request: HttpServletRequest, model: Model, ids: String): String {
+        val list = noticeService!!.noticelist(ids)
+        model.addAttribute("list", list)
+        jiazai(request)
+        return "WEB-INF/view/noticeaddlist"
     }
 
     // 查询单条详情
     @RequestMapping("notget")
-    public String notget(Model model, @RequestParam(value = "ids") Integer ids) {
-        model.addAttribute("notice", noticeService.noticeget(ids));
-        return "informsel";
+    fun notget(model: Model, @RequestParam(value = "ids") ids: Int?): String {
+        model.addAttribute("notice", noticeService!!.noticeget(ids))
+        return "informsel"
     }
 
     @RequestMapping("notdel")
-    public String notdel(HttpServletRequest request, @RequestParam(value = "ids") Integer ids, @RequestParam(value = "isd") Integer isd) {
-        noticeService.noticedel(ids);
-        jiazai(request);
+    fun notdel(request: HttpServletRequest, @RequestParam(value = "ids") ids: Int?, @RequestParam(value = "isd") isd: Int?): String {
+        noticeService!!.noticedel(ids)
+        jiazai(request)
 
-        if (6 == isd) {
-            return "redirect:toaddlisttupian.do?ids=6";
-        }
+        return if (6 == isd) {
+            "redirect:toaddlisttupian.do?ids=6"
+        } else "redirect:notlists.do?ids=" + isd!!
 
 
-        return "redirect:notlists.do?ids=" + isd;
     }
 
     @RequestMapping("noticeupds")
-    public String noticeupds(@RequestParam(value = "ids") Integer ids,
-                             Model model) {
-        Notice notice = noticeService.noticeget(ids);
-        model.addAttribute("not", notice);
-        return "WEB-INF/view/noticeupdate";
+    fun noticeupds(@RequestParam(value = "ids") ids: Int?,
+                   model: Model): String {
+        val notice = noticeService!!.noticeget(ids)
+        model.addAttribute("not", notice)
+        return "WEB-INF/view/noticeupdate"
     }
 
     // 后台添加
     @RequestMapping("notadd")
-    public String notadd(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            @RequestParam(value = "ufile", required = false) MultipartFile file,
-            Model model, Notice notice) {
-        String path = request.getSession().getServletContext()
-                .getRealPath("file");// 获得上传的路径
-        String fileName = file.getOriginalFilename();// 获得上传的文件名
-        File targetFile = new File(path, fileName);// 创建上传到服务器的文件对象
+    fun notadd(
+            request: HttpServletRequest,
+            response: HttpServletResponse,
+            @RequestParam(value = "ufile", required = false) file: MultipartFile,
+            model: Model, notice: Notice): String {
+        val path = request.session.servletContext
+                .getRealPath("file")// 获得上传的路径
+        val fileName = file.originalFilename// 获得上传的文件名
+        val targetFile = File(path, fileName!!)// 创建上传到服务器的文件对象
         try {
-            file.transferTo(targetFile);// 文件转储
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            file.transferTo(targetFile)// 文件转储
+        } catch (e: IllegalStateException) {
+            e.printStackTrace()
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
 
-        String imgUrl = request.getContextPath() + "/file/" + fileName;
+        val imgUrl = request.contextPath + "/file/" + fileName
 
-        notice.setNoticepicture(imgUrl);
-        noticeService.noticeadd(notice);
+        notice.noticepicture = imgUrl
+        noticeService!!.noticeadd(notice)
 
-        jiazai(request);
-//Sos
-        if ("6".equals(notice.getNoticetype())) {
-            return "redirect:toaddlisttupian.do?ids=" + notice.getNoticetype();
-        }
-        return "redirect:notlists.do?ids=" + notice.getNoticetype();
+        jiazai(request)
+        //Sos
+        return if ("6" == notice.noticetype) {
+            "redirect:toaddlisttupian.do?ids=" + notice.noticetype!!
+        } else "redirect:notlists.do?ids=" + notice.noticetype!!
     }
 
     @RequestMapping("notupd")
-    public String notupd(HttpServletRequest request,
-                         HttpServletResponse response,
-                         @RequestParam(value = "ufile", required = true) MultipartFile file,
-                         Model model, Notice notice) {
+    fun notupd(request: HttpServletRequest,
+               response: HttpServletResponse,
+               @RequestParam(value = "ufile", required = true) file: MultipartFile,
+               model: Model, notice: Notice): String {
 
-        if (file.getSize() != 0) {
-            String path = request.getSession().getServletContext()
-                    .getRealPath("file");// 获得上传的路径
-            String fileName = file.getOriginalFilename();// 获得上传的文件名
-            File targetFile = new File(path, fileName);// 创建上传到服务器的文件对象
+        if (file.size != 0L) {
+            val path = request.session.servletContext
+                    .getRealPath("file")// 获得上传的路径
+            val fileName = file.originalFilename// 获得上传的文件名
+            val targetFile = File(path, fileName!!)// 创建上传到服务器的文件对象
             try {
-                file.transferTo(targetFile);// 文件转储
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                file.transferTo(targetFile)// 文件转储
+            } catch (e: IllegalStateException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
+                e.printStackTrace()
             }
-            String imgUrl = request.getContextPath() + "/file/" + fileName;
-            notice.setNoticepicture(imgUrl);
+
+            val imgUrl = request.contextPath + "/file/" + fileName
+            notice.noticepicture = imgUrl
 
         }
-        noticeService.noticeupds(notice);
-        jiazai(request);
+        noticeService!!.noticeupds(notice)
+        jiazai(request)
 
-        if ("6".equals(notice.getNoticetype())) {
-            return "redirect:toaddlisttupian.do?ids=" + notice.getNoticetype();
-        }
-        return "redirect:notlists.do?ids=" + notice.getNoticetype();
+        return if ("6" == notice.noticetype) {
+            "redirect:toaddlisttupian.do?ids=" + notice.noticetype!!
+        } else "redirect:notlists.do?ids=" + notice.noticetype!!
     }
 
     // 去修改
     @RequestMapping("sgetno")
-    public String getno(Model model, Integer ids) {
-//		notgets(model, ids);
-        Notice notice = noticeService.noticeget(ids);
-        model.addAttribute("nots", notice);
-        return "WEB-INF/view/noticeupdate";
+    fun getno(model: Model, ids: Int?): String {
+        //		notgets(model, ids);
+        val notice = noticeService!!.noticeget(ids)
+        model.addAttribute("nots", notice)
+        return "WEB-INF/view/noticeupdate"
     }
 
     @RequestMapping("noticetop5")
-    public String noticetop5(HttpServletRequest request) {
-        jiazai(request);
-        return "redirect:/invest/recommendShow.do";
+    fun noticetop5(request: HttpServletRequest): String {
+        jiazai(request)
+        return "redirect:/invest/recommendShow.do"
     }
 
     // 重新加载top5
-    private void jiazai(HttpServletRequest request) {
-        List<Notice> list = noticeService.noticetop5();
-        List<Notice> lists = noticeService.noticetop5meiti();
-        List<Notice> listss = noticeService.noticetop5sy();
+    private fun jiazai(request: HttpServletRequest) {
+        val list = noticeService!!.noticetop5()
+        val lists = noticeService.noticetop5meiti()
+        val listss = noticeService.noticetop5sy()
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>top5");
-        ServletContext context = request.getSession().getServletContext();
-        context.setAttribute("listss", list);
-        context.setAttribute("meiti", lists);
-        context.setAttribute("sy", listss);
-        context.setAttribute("size", uService.userList().size());
+        println(">>>>>>>>>>>>>>>>>>>>>>>top5")
+        val context = request.session.servletContext
+        context.setAttribute("listss", list)
+        context.setAttribute("meiti", lists)
+        context.setAttribute("sy", listss)
+        context.setAttribute("size", uService!!.userList().size)
     }
 
-    private void notgets(Model model, Integer ids) {
-        Notice notice = noticeService.noticeget(ids);
-        model.addAttribute("nots", notice);
+    private fun notgets(model: Model, ids: Int?) {
+        val notice = noticeService!!.noticeget(ids)
+        model.addAttribute("nots", notice)
     }
 
 }

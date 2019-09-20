@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service
 @Service
 interface CertifrecordService {
 
-    fun queryCertifrecord(map: Map<String, Any>): List<Certifrecord>
+    fun queryCertifrecord(map: Map<String, Any?>): List<Certifrecord>
 
-    fun updateCertifrecord(map: Map<String, Any>): Int
+    fun updateCertifrecord(map: Map<String, Any?>): Int
 
-    fun addCertifrecord(map: Map<String, Any>): Int
+    fun addCertifrecord(map: Map<String, Any?>): Int
 }

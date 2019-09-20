@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ClapplyforDao {
 
-    fun queryClapplyfors(map: Map<String, Any>): List<Clapplyfor>
+    fun queryClapplyfors(map: Map<String, Any?>): List<Clapplyfor>
 
     fun insertClapplyfor(map: Map<String, Any>): Int
 
-    fun updateClapplyforState(map: Map<String, Any>): Int
+    fun updateClapplyforState(map: Map<String, Any?>): Int
 
 }

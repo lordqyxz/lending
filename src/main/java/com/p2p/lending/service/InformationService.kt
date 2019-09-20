@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 interface InformationService {
-    fun query(map: Map<String, Any>): Users
+    fun query(map: Map<String, Any?>): Users
 
     // 账户设置
     fun find(map: Map<String, Any>): Users

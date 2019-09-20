@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface InfromationDao {
     // 我的账户
-    fun query(map: Map<String, Any>): Users
+    fun query(map: Map<String, Any?>): Users
 
     // 账户设置
     fun find(map: Map<String, Any>): Users

@@ -1,65 +1,63 @@
-package com.p2p.lending.controller;
+package com.p2p.lending.controller
 
-import com.p2p.lending.entity.Recharge;
-import com.p2p.lending.service.RechargeService;
-import org.apache.poi.hssf.usermodel.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.p2p.lending.entity.Recharge
+import com.p2p.lending.service.RechargeService
+import org.apache.poi.hssf.usermodel.*
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.swing.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpSession
+import javax.swing.*
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.HashMap
 
 @Controller
 @RequestMapping("rc")
-public class RechargeController {
-    String str = "WEB-INF/view/";
+class RechargeController {
+    internal var str = "WEB-INF/view/"
     @Autowired
-    private RechargeService rechargeService;
+    private val rechargeService: RechargeService? = null
 
 
     @RequestMapping("rech")
-    public String rech(Model model,
-                       @RequestParam(value = "currpage", required = false) String currpage,
-                       @RequestParam(value = "uname", required = false) String uname,
-                       @RequestParam(value = "yyy", required = false) String yyy,
-                       @RequestParam(value = "yyyy", required = false) String yyyy,
-                       @RequestParam(value = "zflx", required = false) String zflx,
-                       @RequestParam(value = "statu", required = false) String statu,
-                       HttpServletRequest httpServletRequest) {
-        HttpSession session = httpServletRequest.getSession();
-        session.setAttribute("uname", uname);
-        session.setAttribute("yyy", yyy);
-        session.setAttribute("yyyy", yyyy);
-        session.setAttribute("statu", statu);
-        session.setAttribute("zflx", zflx);
+    fun rech(model: Model,
+             @RequestParam(value = "currpage", required = false) currpage: String,
+             @RequestParam(value = "uname", required = false) uname: String,
+             @RequestParam(value = "yyy", required = false) yyy: String,
+             @RequestParam(value = "yyyy", required = false) yyyy: String,
+             @RequestParam(value = "zflx", required = false) zflx: String,
+             @RequestParam(value = "statu", required = false) statu: String,
+             httpServletRequest: HttpServletRequest): String {
+        val session = httpServletRequest.session
+        session.setAttribute("uname", uname)
+        session.setAttribute("yyy", yyy)
+        session.setAttribute("yyyy", yyyy)
+        session.setAttribute("statu", statu)
+        session.setAttribute("zflx", zflx)
 
-        Map<String, Object> findmap = new HashMap<String, Object>();
-        findmap.put("uname", uname);
-        findmap.put("yyy", yyy);
-        findmap.put("yyyy", yyyy);
-        findmap.put("statu", statu);
-        findmap.put("zflx", zflx);
+        val findmap = HashMap<String, Any>()
+        findmap["uname"] = uname
+        findmap["yyy"] = yyy
+        findmap["yyyy"] = yyyy
+        findmap["statu"] = statu
+        findmap["zflx"] = zflx
 
 
-        Map<String, Object> map = rechargeService.selectrc(currpage, findmap);
+        val map = rechargeService!!.selectrc(currpage, findmap)
 
-        model.addAttribute("pagerow", map.get("pagerow"));
-        model.addAttribute("currpages", map.get("currpages"));
-        model.addAttribute("lrc", map.get("lrc"));
-        model.addAttribute("totalpage", map.get("totalpage"));
-        model.addAttribute("totalrow", map.get("totalrow"));
-        model.addAttribute("czmoneyre", rechargeService.sumczmoneyre());
-        model.addAttribute("dzmoneyre", rechargeService.sumdzmoneyre());
-        return str + "Rechargelist";
+        model.addAttribute("pagerow", map["pagerow"])
+        model.addAttribute("currpages", map["currpages"])
+        model.addAttribute("lrc", map["lrc"])
+        model.addAttribute("totalpage", map["totalpage"])
+        model.addAttribute("totalrow", map["totalrow"])
+        model.addAttribute("czmoneyre", rechargeService.sumczmoneyre())
+        model.addAttribute("dzmoneyre", rechargeService.sumdzmoneyre())
+        return str + "Rechargelist"
     }
 
     /**
@@ -69,78 +67,78 @@ public class RechargeController {
      * @throws IOException
      */
     @RequestMapping("putexcelr")
-    public String putexcelr() throws IOException {
-        HSSFWorkbook workBook = new HSSFWorkbook();
-        HSSFSheet sheet = workBook.createSheet("充值记录");
-        HSSFRow titleRow = sheet.createRow(0);
+    @Throws(IOException::class)
+    fun putexcelr(): String {
+        val workBook = HSSFWorkbook()
+        val sheet = workBook.createSheet("充值记录")
+        val titleRow = sheet.createRow(0)
         // 标题行
-        HSSFCell cell1 = titleRow.createCell(0);
-        cell1.setCellValue("用户ID");
-        HSSFCell cell2 = titleRow.createCell(1);
-        cell2.setCellValue("用户名");
-        HSSFCell cell3 = titleRow.createCell(2);
-        cell3.setCellValue("真实名");
-        HSSFCell cell4 = titleRow.createCell(3);
-        cell4.setCellValue("充值类型");
-        HSSFCell cell5 = titleRow.createCell(4);
-        cell5.setCellValue("流水号");
-        HSSFCell cell6 = titleRow.createCell(5);
-        cell6.setCellValue("充值金额");
-        HSSFCell cell7 = titleRow.createCell(6);
-        cell7.setCellValue("费率");
-        HSSFCell cell8 = titleRow.createCell(7);
-        cell8.setCellValue("到账金额");
-        HSSFCell cell9 = titleRow.createCell(8);
-        cell9.setCellValue("转账时间");
-        HSSFCell cell10 = titleRow.createCell(9);
-        cell10.setCellValue("状态");
+        val cell1 = titleRow.createCell(0)
+        cell1.setCellValue("用户ID")
+        val cell2 = titleRow.createCell(1)
+        cell2.setCellValue("用户名")
+        val cell3 = titleRow.createCell(2)
+        cell3.setCellValue("真实名")
+        val cell4 = titleRow.createCell(3)
+        cell4.setCellValue("充值类型")
+        val cell5 = titleRow.createCell(4)
+        cell5.setCellValue("流水号")
+        val cell6 = titleRow.createCell(5)
+        cell6.setCellValue("充值金额")
+        val cell7 = titleRow.createCell(6)
+        cell7.setCellValue("费率")
+        val cell8 = titleRow.createCell(7)
+        cell8.setCellValue("到账金额")
+        val cell9 = titleRow.createCell(8)
+        cell9.setCellValue("转账时间")
+        val cell10 = titleRow.createCell(9)
+        cell10.setCellValue("状态")
 
-        List<Recharge> lw = rechargeService.selectall();
-        for (int i = 0; i < lw.size(); i++) {
-            Recharge wi = lw.get(i);
+        val lw = rechargeService!!.selectall()
+        for (i in lw.indices) {
+            val wi = lw[i]
             // 数据行
-            HSSFRow dataRow = sheet.createRow(i + 1);
-            HSSFCell uid = dataRow.createCell(0);
-            uid.setCellValue(wi.getuID());
-            HSSFCell uname = dataRow.createCell(1);
-            uname.setCellValue(wi.getUname());
-            HSSFCell zname = dataRow.createCell(2);
-            zname.setCellValue(wi.getZname());
-            HSSFCell czlx = dataRow.createCell(3);
-            czlx.setCellValue(wi.getCzlx());
-            HSSFCell lsh = dataRow.createCell(4);
-            lsh.setCellValue(wi.getLsh());
-            HSSFCell czmoney = dataRow.createCell(5);
-            czmoney.setCellValue(wi.getCzmoney());
-            HSSFCell fl = dataRow.createCell(6);
-            fl.setCellValue(wi.getFl());
-            HSSFCell dzmoney = dataRow.createCell(7);
-            dzmoney.setCellValue(wi.getDzmoney());
-            HSSFCell cztime = dataRow.createCell(8);
+            val dataRow = sheet.createRow(i + 1)
+            val uid = dataRow.createCell(0)
+            uid.setCellValue(wi.getuID()!!.toDouble())
+            val uname = dataRow.createCell(1)
+            uname.setCellValue(wi.uname)
+            val zname = dataRow.createCell(2)
+            zname.setCellValue(wi.zname)
+            val czlx = dataRow.createCell(3)
+            czlx.setCellValue(wi.czlx)
+            val lsh = dataRow.createCell(4)
+            lsh.setCellValue(wi.lsh)
+            val czmoney = dataRow.createCell(5)
+            czmoney.setCellValue(wi.czmoney)
+            val fl = dataRow.createCell(6)
+            fl.setCellValue(wi.fl)
+            val dzmoney = dataRow.createCell(7)
+            dzmoney.setCellValue(wi.dzmoney)
+            val cztime = dataRow.createCell(8)
 
-            HSSFCellStyle dateStyle = workBook.createCellStyle();
-            HSSFDataFormat dateFormat = workBook.createDataFormat();
-            dateStyle
-                    .setDataFormat(dateFormat.getFormat("yyyy-MM-dd HH:mm:ss"));
-            cztime.setCellStyle(dateStyle);
+            val dateStyle = workBook.createCellStyle()
+            val dateFormat = workBook.createDataFormat()
+            dateStyle.dataFormat = dateFormat.getFormat("yyyy-MM-dd HH:mm:ss")
+            cztime.setCellStyle(dateStyle)
 
-            cztime.setCellValue(wi.getCztime());
-            HSSFCell statu = dataRow.createCell(9);
-            statu.setCellValue(wi.getStatu());
+            cztime.setCellValue(wi.cztime)
+            val statu = dataRow.createCell(9)
+            statu.setCellValue(wi.statu)
 
         }
 
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.showOpenDialog(null);
-        String path = chooser.getSelectedFile().getPath();
+        val chooser = JFileChooser()
+        chooser.fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
+        chooser.showOpenDialog(null)
+        val path = chooser.selectedFile.path
 
-        if (path != null && !path.equals("")) {
+        if (path != null && path != "") {
 
-            FileOutputStream fos = new FileOutputStream(
-                    path + "\\充值记录.xls");
-            workBook.write(fos);
+            val fos = FileOutputStream(
+                    "$path\\充值记录.xls")
+            workBook.write(fos)
         }
-        return "redirect:rech.do";
+        return "redirect:rech.do"
     }
 }

@@ -18,19 +18,19 @@ interface ApproveDao {
      * @param map
      * @return List
      */
-    fun queryApproves(map: Map<String, Any>): List<Approveitem>
+    fun queryApproves(map: Map<String, Any?>): List<Approveitem>
 
     /**
      * Description：添加新认证项
      *
      * @param map
      */
-    fun addApproves(map: Map<String, Any>)
+    fun addApproves(map: Map<String, Any?>)
 
     /**
      * Description：修改认证项
      *
      * @param map
      */
-    fun updateApproves(map: Map<String, Any>)
+    fun updateApproves(map: Map<String, Any?>)
 }

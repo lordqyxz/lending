@@ -1,221 +1,226 @@
-package com.p2p.lending.controller;
+package com.p2p.lending.controller
 
-import com.p2p.lending.entity.*;
-import com.p2p.lending.service.*;
-import com.p2p.lending.util.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.util.Date;
-import java.util.List;
+import com.p2p.lending.entity.Biao
+import com.p2p.lending.entity.Details
+import com.p2p.lending.entity.InvestInfo
+import com.p2p.lending.entity.Product
+import com.p2p.lending.service.*
+import com.p2p.lending.util.BeanUtils
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.context.request.RequestContextHolder
+import org.springframework.web.context.request.ServletRequestAttributes
+import org.springframework.web.multipart.MultipartFile
+import java.io.File
+import java.util.*
+import javax.annotation.Resource
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpSession
 
 @Controller
 @RequestMapping("product")
-public class ProductController {
-
-    static final String str = "WEB-INF/view/";
+class ProductController {
     @Resource
-    InvestService InvestService;
+    internal var InvestService: InvestService? = null
     @Autowired
-    private UsersService usersService;
+    private val usersService: UsersService? = null
     @Autowired
-    private BiaoService biaoService;
+    private val biaoService: BiaoService? = null
     @Resource
-    private DetailsService detailsService;
+    private val detailsService: DetailsService? = null
     @Resource
-    private ProductService service;
+    private val service: ProductService? = null
 
     @RequestMapping("input")
-    public String addpro(Model model, Product params) {
-        Product product;
-        if (params.getId() == null) {
-            product = new Product();
+    fun addpro(model: Model, params: Product): String {
+        val product: Product
+        if (params.id == null) {
+            product = Product()
         } else {
-            product = service.get(params.getId());
+            product = service!![params.id]
         }
-        model.addAttribute("domain", product);
-        List<Biao> list3 = biaoService.findList(BeanUtils.INSTANCE.toMap(new Biao()));
-        model.addAttribute("blist", list3);
-        return str + "bk_input_pro";
+        model.addAttribute("domain", product)
+        val list3 = biaoService!!.findList(BeanUtils.toMap(Biao())!!)
+        model.addAttribute("blist", list3)
+        return str + "bk_input_pro"
     }
 
     @RequestMapping("list")
-    public String list(Model model, @RequestParam(value = "currpage", required = false) String currpage,
-                       @RequestParam(value = "status", required = false) String status) {
-        int pagerow = 5;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
-        Product product = new Product();
-        List<Product> list = service.findList(BeanUtils.INSTANCE.toMap(product));
-        totalrow = list.size();// 获取总行数
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+    fun list(model: Model, @RequestParam(value = "currpage", required = false) currpage: String?,
+             @RequestParam(value = "status", required = false) status: String?): String {
+        val pagerow = 5// 每页5行
+        var currpages = 1// 当前页
+        var totalpage = 0// 总页数
+        var totalrow = 0// 总行数
+        val product = Product()
+        val list = service!!.findList(BeanUtils.toMap(product)!!)
+        totalrow = list.size// 获取总行数
+        if (currpage != null && "" != currpage) {
+            currpages = Integer.parseInt(currpage)
         }
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalpage = (totalrow + pagerow - 1) / pagerow
         if (currpages < 1) {
-            currpages = 1;
+            currpages = 1
         }
         if (currpages > totalpage) {
             if (totalpage < 1) {
-                totalpage = 1;
+                totalpage = 1
             }
-            currpages = totalpage;
+            currpages = totalpage
         }
-        Integer startPage = (currpages - 1) * pagerow;
-        product.setStartPage(startPage);
-        product.setPageSize(pagerow);
-        if (status != null && status.equals("ing")) {
-            product.setPstate("1");
+        val startPage = (currpages - 1) * pagerow
+        product.startPage = startPage
+        product.pageSize = pagerow
+        if (status != null && status == "ing") {
+            product.pstate = "1"
         }
-        if (status != null && status.equals("over")) {
-            product.setPstate("2");
+        if (status != null && status == "over") {
+            product.pstate = "2"
         }
 
-        List<Product> list2 = service.findList(BeanUtils.INSTANCE.toMap(product));
+        val list2 = service.findList(BeanUtils.toMap(product)!!)
         // 更新进度
-        service.updateProgres(list2);
+        service.updateProgres(list2)
         // 更新状态
-        service.updateStatus(list2);
-        model.addAttribute("list", list2);
+        service.updateStatus(list2)
+        model.addAttribute("list", list2)
 
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
+        model.addAttribute("totalrow", totalrow)
+        model.addAttribute("currpages", currpages)
+        model.addAttribute("totalpage", totalpage)
 
-        return str + "bk_list_pro";
+        return str + "bk_list_pro"
     }
 
     @RequestMapping("biaolist")
-    public String biaolist(Model model, @RequestParam(value = "currpage", required = false) String currpage,
-                           @RequestParam(value = "bid", required = true) String bid) {
-        int pagerow = 5;// 每页5行
-        int currpages = 1;// 当前页
-        int totalpage = 0;// 总页数
-        int totalrow = 0;// 总行数
-        InvestInfo ii = new InvestInfo();
-        ii.setBrrowid(Integer.parseInt(bid));
-        List<InvestInfo> list = InvestService.getDtail(BeanUtils.INSTANCE.toMap(ii));
-        List<Users> ulist = usersService.userList();
-        totalrow = list.size();// 获取总行数
-        if (currpage != null && !"".equals(currpage)) {
-            currpages = Integer.parseInt(currpage);
+    fun biaolist(model: Model, @RequestParam(value = "currpage", required = false) currpage: String?,
+                 @RequestParam(value = "bid", required = true) bid: String): String {
+        val pagerow = 5// 每页5行
+        var currpages = 1// 当前页
+        var totalpage = 0// 总页数
+        var totalrow = 0// 总行数
+        val ii = InvestInfo()
+        ii.brrowid = Integer.parseInt(bid)
+        val list = InvestService!!.getDtail(BeanUtils.toMap(ii)!!)
+        val ulist = usersService!!.userList()
+        totalrow = list.size// 获取总行数
+        if (currpage != null && "" != currpage) {
+            currpages = Integer.parseInt(currpage)
         }
-        totalpage = (totalrow + pagerow - 1) / pagerow;
+        totalpage = (totalrow + pagerow - 1) / pagerow
         if (currpages < 1) {
-            currpages = 1;
+            currpages = 1
         }
         if (currpages > totalpage) {
             if (totalpage < 1) {
-                totalpage = 1;
+                totalpage = 1
             }
-            currpages = totalpage;
+            currpages = totalpage
         }
-        Integer startPage = (currpages - 1) * pagerow;
-        ii.setStartPage(startPage);
-        ii.setPageSize(pagerow);
+        val startPage = (currpages - 1) * pagerow
+        ii.startPage = startPage
+        ii.pageSize = pagerow
 
-        List<InvestInfo> list2 = InvestService.getDtail(BeanUtils.INSTANCE.toMap(ii));
-        System.out.println(list2.size());
+        val list2 = InvestService!!.getDtail(BeanUtils.toMap(ii)!!)
+        println(list2.size)
         // 更新进度
         // service.updateProgres(list2);
         // 更新状态
         // service.updateStatus(list2);
-        model.addAttribute("us", ulist);
-        model.addAttribute("bid", bid);
-        model.addAttribute("list", list2);
-        model.addAttribute("totalrow", totalrow);
-        model.addAttribute("currpages", currpages);
-        model.addAttribute("totalpage", totalpage);
+        model.addAttribute("us", ulist)
+        model.addAttribute("bid", bid)
+        model.addAttribute("list", list2)
+        model.addAttribute("totalrow", totalrow)
+        model.addAttribute("currpages", currpages)
+        model.addAttribute("totalpage", totalpage)
 
-        return str + "bk_list_biaos";
+        return str + "bk_list_biaos"
     }
 
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String save(HttpServletRequest request, Product product,
-                       @RequestParam(value = "pictures", required = false) MultipartFile multipartFile, Model model) {
-        if (product.getPpublishtime() == null || product.getPpublishtime().equals("")) {
-            product.setPpublishtime(new Date());
+    @RequestMapping(value = ["save"], method = [RequestMethod.POST])
+    fun save(request: HttpServletRequest, product: Product,
+             @RequestParam(value = "pictures", required = false) multipartFile: MultipartFile, model: Model): String {
+        if (product.ppublishtime == null || product.ppublishtime!!.equals("")) {
+            product.ppublishtime = Date()
         }
-        if (product.getPcount() == null || product.getPcount().equals("")) {
-            product.setPcount(new Date());
+        if (product.pcount == null || product.pcount!!.equals("")) {
+            product.pcount = Date()
         }
-        if (product.getPtime() == null || product.getPtime().equals("")) {
-            product.setPtime(new Date());
+        if (product.ptime == null || product.ptime!!.equals("")) {
+            product.ptime = Date()
         }
-        String fileName = multipartFile.getOriginalFilename();
+        val fileName = multipartFile.originalFilename
         // 获取文件夹路径
-        String Path = request.getSession().getServletContext().getRealPath("cover");// 获得上传的路径
-        File file = new File(Path, fileName);
+        val Path = request.session.servletContext.getRealPath("cover")// 获得上传的路径
+        val file = File(Path, fileName!!)
 
         try {
-            multipartFile.transferTo(file);
-        } catch (Exception e) {
-            e.printStackTrace();
+            multipartFile.transferTo(file)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
         // 设置文件保存路径
-        String imgUrl = request.getContextPath() + "/cover/" + fileName;
-        product.setPicture(imgUrl);
-        if (product.getId() == null) {
-            service.create(product);
-            int id = product.getId();
+        val imgUrl = request.contextPath + "/cover/" + fileName
+        product.picture = imgUrl
+        if (product.id == null) {
+            service!!.create(product)
+            val id = product.id!!
 
-            System.out.println("id==   " + id);
-            request.setAttribute("id", id);
+            println("id==   $id")
+            request.setAttribute("id", id)
         } else {
-            service.update(product);
+            service!!.update(product)
         }
-        model.addAttribute("domain", product);
+        model.addAttribute("domain", product)
 
-        return str + "bk_input_detail";
+        return str + "bk_input_detail"
     }
 
     // 添加详情
     @RequestMapping("todetail")
-    public String todetail(Model model, HttpSession session, Product product) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+    fun todetail(model: Model, session: HttpSession, product: Product): String {
+        val request = (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
 
-        if (product.getPtype() == null || product.getPtype().equals("")
-                || product.getPtype().equals("请选择")) {
+        if (product.ptype == null || product.ptype!!.equals("")
+                || product.ptype!!.equals("请选择")  ) {//注意数据库数据格式
 
-            product.setPtype(null);
+            product.ptype = null
         }
-        Details details = product.getDetails();
-        details.setPid(product.getId());
-        Details details2 = new Details();
+        val details = product.details
+        details!!.pid = product.id
+        val details2 = Details()
 
         //把对象拷贝到新的对象
-        org.springframework.beans.BeanUtils.copyProperties(details, details2);
-        detailsService.create(details2);
-        model.addAttribute("domain", product);
-        return str + "bk_input_detail";
+        org.springframework.beans.BeanUtils.copyProperties(details, details2)
+        detailsService!!.create(details2)
+        model.addAttribute("domain", product)
+        return str + "bk_input_detail"
     }
 
     @RequestMapping("delete")
-    public String delete(@RequestParam("pid") String pid) {
-        Integer id = Integer.parseInt(pid);
-        service.delete(id);
-        return "redirect:/product/list.do";
+    fun delete(@RequestParam("pid") pid: String): String {
+        val id = Integer.parseInt(pid)
+        service!!.delete(id)
+        return "redirect:/product/list.do"
     }
 
     @RequestMapping("detail")
-    public String detail(Model model, @RequestParam(value = "pid", required = true) String id) {
-        InvestInfo info = new InvestInfo();
-        info.setBrrowid(Integer.parseInt(id));
-        List<InvestInfo> list = InvestService.getDtail(BeanUtils.INSTANCE.toMap(info));
-        model.addAttribute("list", list);
-        return str + "bk_pro_detail";
+    fun detail(model: Model, @RequestParam(value = "pid", required = true) id: String): String {
+        val info = InvestInfo()
+        info.brrowid = Integer.parseInt(id)
+        val list = InvestService!!.getDtail(BeanUtils.toMap(info)!!)
+        model.addAttribute("list", list)
+        return str + "bk_pro_detail"
+    }
+
+    companion object {
+
+        internal val str = "WEB-INF/view/"
     }
 
 }

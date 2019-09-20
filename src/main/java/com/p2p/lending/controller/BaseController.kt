@@ -1,29 +1,32 @@
-package com.p2p.lending.controller;
+package com.p2p.lending.controller
 
-import com.p2p.lending.service.LoggerService;
-import com.p2p.lending.util.LogUtils;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.p2p.lending.service.LoggerService
+import com.p2p.lending.util.LogUtils
+import org.apache.log4j.Logger
+import org.springframework.beans.factory.annotation.Autowired
 
-public class BaseController extends LogUtils {
-    private static final long serialVersionUID = 6357869213649815390L;
-    protected Logger logger = Logger.getLogger(this.getClass());
+class BaseController : LogUtils() {
+    protected var logger = Logger.getLogger(this.javaClass)
     @Autowired
-    private LoggerService loggerService;
+    private val loggerService: LoggerService? = null
 
-    /**
-     * 得到分页列表的信息
-     */
+    companion object {
+        private val serialVersionUID = 6357869213649815390L
 
-    public static void logBefore(Logger logger, String interfaceName) {
-        logger.info("");
-        logger.info("日志开始------------------------");
-        logger.info(interfaceName);
-    }
+        /**
+         * 得到分页列表的信息
+         */
 
-    public static void logAfter(Logger logger) {
-        logger.info("日志结束---------------------------");
-        logger.info("");
+        fun logBefore(logger: Logger, interfaceName: String) {
+            logger.info("")
+            logger.info("日志开始------------------------")
+            logger.info(interfaceName)
+        }
+
+        fun logAfter(logger: Logger) {
+            logger.info("日志结束---------------------------")
+            logger.info("")
+        }
     }
 
 }

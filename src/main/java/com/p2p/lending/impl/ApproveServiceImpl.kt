@@ -1,7 +1,7 @@
 package com.p2p.lending.impl
 
-import com.p2p.lending.repository.ApproveDao
 import com.p2p.lending.entity.Approveitem
+import com.p2p.lending.repository.ApproveDao
 import com.p2p.lending.service.ApproveService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -25,7 +25,7 @@ open class ApproveServiceImpl : ApproveService {
      * @return List
      */
 
-    override fun queryApproves(map: Map<String, Any>): List<Approveitem> {
+    override fun queryApproves(map: Map<String, Any?>): List<Approveitem> {
         // TODO Auto-generated method stub
         return approveDao!!.queryApproves(map)
     }
@@ -35,7 +35,7 @@ open class ApproveServiceImpl : ApproveService {
      *
      * @param map
      */
-    override fun updateApproves(map: Map<String, Any>) {
+    override fun updateApproves(map: Map<String, Any?>) {
         // TODO Auto-generated method stub
         approveDao!!.updateApproves(map)
     }
@@ -45,7 +45,7 @@ open class ApproveServiceImpl : ApproveService {
      *
      * @param map
      */
-    override fun addApproves(map: Map<String, Any>) {
+    override fun addApproves(map: Map<String, Any?>) {
         // TODO Auto-generated method stub
         approveDao!!.addApproves(map)
     }

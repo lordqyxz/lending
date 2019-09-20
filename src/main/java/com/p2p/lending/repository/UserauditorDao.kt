@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserauditorDao {
 
-    fun queryUserauditor(map: Map<String, Any>): List<Userauditor>
+    fun queryUserauditor(map: Map<String, Any?>): List<Userauditor>
 
-    fun addUserauditor(map: Map<String, Any>): Int
+    fun addUserauditor(map: Map<String, Any?>): Int
 
 }

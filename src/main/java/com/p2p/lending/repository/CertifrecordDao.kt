@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CertifrecordDao : BaseDao<Any, Any> {
 
-    fun queryCertifrecord(map: Map<String, Any>): List<Certifrecord>
+    fun queryCertifrecord(map: Map<String, Any?>): List<Certifrecord>
 
-    fun updateCertifrecord(map: Map<String, Any>): Int
+    fun updateCertifrecord(map: Map<String, Any?>): Int
 
-    fun addCertifrecord(map: Map<String, Any>): Int
+    fun addCertifrecord(map: Map<String, Any?>): Int
 
 }
