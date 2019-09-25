@@ -1,47 +1,47 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util.un
 
-import com.p2p.lending.entity.Log;
+import com.p2p.lending.entity.Log
+import java.util.*
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-
-public class ObjAnalysis {
-    public static Map ConvertObjToMap(Object obj) {
-        Map<String, Object> reMap = new HashMap<String, Object>();
+object ObjAnalysis {
+    fun ConvertObjToMap(obj: Any?): Map<*, *>? {
+        val reMap = HashMap<String, Any>()
         if (obj == null)
-            return null;
-        Field[] fields = obj.getClass().getDeclaredFields();
+            return null
+        val fields = obj.javaClass.declaredFields
         try {
-            for (int i = 0; i < fields.length; i++) {
+            for (i in fields.indices) {
                 try {
-                    Field f = obj.getClass().getDeclaredField(fields[i].getName());
-                    f.setAccessible(true);
-                    Object o = f.get(obj);
-                    reMap.put(fields[i].getName(), o);
-                } catch (NoSuchFieldException e) {
+                    val f = obj.javaClass.getDeclaredField(fields[i].name)
+                    f.isAccessible = true
+                    val o = f.get(obj)
+                    reMap[fields[i].name] = o
+                } catch (e: NoSuchFieldException) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IllegalArgumentException e) {
+                    e.printStackTrace()
+                } catch (e: IllegalArgumentException) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
+                    e.printStackTrace()
+                } catch (e: IllegalAccessException) {
                     // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    e.printStackTrace()
                 }
+
             }
-        } catch (SecurityException e) {
+        } catch (e: SecurityException) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            e.printStackTrace()
         }
-        return reMap;
+
+        return reMap
     }
 
-    public static void main(String[] args) {
-        Log a = new Log();
-        a.setLaccount("123456");
-        a.setId(1);
-        Map m = ConvertObjToMap(a);
-        System.out.println(m);
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val a = Log()
+        a.laccount = "123456"
+        a.id = 1
+        val m = ConvertObjToMap(a)
+        println(m)
     }
 }

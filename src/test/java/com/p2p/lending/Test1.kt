@@ -1,21 +1,25 @@
-package com.p2p.lending.util;
+package com.p2p.lending
 
-import org.junit.Test;
+import org.junit.Test
 
-public class Test1 {
+class Test1 {
 
-    @Test
-    public static void main(String[] args) {
-        int a = new Test1().main1();
-        System.out.println("a===  " + a);
+    fun main1(): Int {
+        try {
+            println("11111111")
+            return 1
+        } finally {
+            println("33333333")
+        }
     }
 
-    public int main1() {
-        try {
-            System.out.println("11111111");
-            return 1;
-        } finally {
-            System.out.println("33333333");
+    companion object {
+
+        @Test
+        @JvmStatic
+        fun main(args: Array<String>) {
+            val a = Test1().main1()
+            println("a===  $a")
         }
     }
 }

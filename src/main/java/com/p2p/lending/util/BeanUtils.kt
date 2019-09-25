@@ -48,7 +48,7 @@ object BeanUtils {
         val log = Log()
         log.laccount = "111"
 
-        val map = BeanUtils.toMap(log)
+        val map = toMap(log)
         println(map!!["laccount"])
     }
 

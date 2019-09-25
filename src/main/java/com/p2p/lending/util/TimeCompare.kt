@@ -1,50 +1,56 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.SimpleDateFormat
+import java.util.*
 
-public class TimeCompare {
+class TimeCompare {
 
-    public static void main(String[] args) {
+    fun Compare(DATE1: String, DATE2: String): Int {
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        val df = SimpleDateFormat("yyyy-MM-dd hh:mm")
         try {
-            Date dt1 = df.parse(new Date().toString());
-            Date dt2 = df.parse("2017-01-12 00:00:00");
-            System.out.println("dt1   =  " + dt1.getTime());
-            System.out.println("dt2   =  " + dt2.getTime());
-            if (dt1.getTime() < dt2.getTime()) {
-                System.out.println("现在时间比项目到期时间早");
-            } else if (dt1.getTime() > dt2.getTime()) {
-                System.out.println("现在时间比项目到期时间晚");
+            val dt1 = df.parse(DATE1)
+            val dt2 = df.parse(DATE2)
+            if (dt1.time < dt2.time) {
+                println("dt1   =  " + dt1.time)
+                println("dt2   =  " + dt2.time)
+                println("dt1 在dt2前")
+                return 1
+            } else if (dt1.time > dt2.time) {
+                println("dt1在dt2后")
+                return -1
             } else {
-
+                return 0
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (exception: Exception) {
+            exception.printStackTrace()
         }
+
+        return 0
     }
 
-    public int Compare(String DATE1, String DATE2) {
+    companion object {
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        try {
-            Date dt1 = df.parse(DATE1);
-            Date dt2 = df.parse(DATE2);
-            if (dt1.getTime() < dt2.getTime()) {
-                System.out.println("dt1   =  " + dt1.getTime());
-                System.out.println("dt2   =  " + dt2.getTime());
-                System.out.println("dt1 在dt2前");
-                return 1;
-            } else if (dt1.getTime() > dt2.getTime()) {
-                System.out.println("dt1在dt2后");
-                return -1;
-            } else {
-                return 0;
+        @JvmStatic
+        fun main(args: Array<String>) {
+
+            val df = SimpleDateFormat("yyyy-MM-dd hh:mm")
+            try {
+                val dt1 = df.parse(Date().toString())
+                val dt2 = df.parse("2017-01-12 00:00:00")
+                println("dt1   =  " + dt1.time)
+                println("dt2   =  " + dt2.time)
+                if (dt1.time < dt2.time) {
+                    println("现在时间比项目到期时间早")
+                } else if (dt1.time > dt2.time) {
+                    println("现在时间比项目到期时间晚")
+                } else {
+
+                }
+            } catch (exception: Exception) {
+                exception.printStackTrace()
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+
         }
-        return 0;
     }
 }

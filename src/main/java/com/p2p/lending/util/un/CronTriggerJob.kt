@@ -1,12 +1,13 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util.un
 
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.quartz.JobExecutionContext
+import org.quartz.JobExecutionException
+import org.springframework.scheduling.quartz.QuartzJobBean
 
-public class CronTriggerJob extends QuartzJobBean {
+class CronTriggerJob : QuartzJobBean() {
 
-    protected void executeInternal(JobExecutionContext arg0) throws JobExecutionException {
+    @Throws(JobExecutionException::class)
+    override fun executeInternal(arg0: JobExecutionContext) {
     }
 
 }

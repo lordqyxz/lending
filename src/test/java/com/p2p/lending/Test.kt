@@ -1,17 +1,17 @@
-package com.p2p.lending.util;
+package com.p2p.lending
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*
 
-public class Test {
-    public static void main(String[] args) {
-        Date date = new Date(System.currentTimeMillis() + (1000 * 60 * 60 * 24 * 30));
-        Calendar calendar = Calendar.getInstance();// 时间转换
-        for (int i = 0; i < 12; i++) {
-            calendar.setTime(date);
-            calendar.add(Calendar.SECOND, 60 * 60 * 24 * 30);
-            date = calendar.getTime();
-            System.out.println(date.toString());
+object Test {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        var date = Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 30)
+        val calendar = Calendar.getInstance()// 时间转换
+        for (i in 0..11) {
+            calendar.time = date
+            calendar.add(Calendar.SECOND, 60 * 60 * 24 * 30)
+            date = calendar.time
+            println(date.toString())
 
         }
 

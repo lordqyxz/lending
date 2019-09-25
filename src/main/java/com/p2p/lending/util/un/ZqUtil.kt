@@ -1,23 +1,25 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util.un
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
-public abstract class ZqUtil {
+object ZqUtil {
 
-    public static Date strchangedate(String date) {
+    fun strchangedate(date: String): Date? {
+        var date = date
         try {
-            if (date.length() < 12) {
-                date = date + " 00:00:00";
+            if (date.length < 12) {
+                date = "$date 00:00:00"
             }
-            SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            return sim.parse(date);
-        } catch (ParseException e) {
+            val sim = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            return sim.parse(date)
+        } catch (e: ParseException) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            e.printStackTrace()
         }
-        return null;
+
+        return null
     }
 
 }

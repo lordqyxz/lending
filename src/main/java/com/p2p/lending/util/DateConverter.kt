@@ -1,21 +1,21 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util
 
-import org.springframework.core.convert.converter.Converter;
+import org.springframework.core.convert.converter.Converter
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
 
-public class DateConverter implements Converter<String, Date> {
-    @Override
-    public Date convert(String source) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        dateFormat.setLenient(false);
+class DateConverter : Converter<String, Date> {
+    override fun convert(source: String): Date? {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+        dateFormat.isLenient = false
         try {
-            return dateFormat.parse(source);
-        } catch (ParseException e) {
-            e.printStackTrace();
+            return dateFormat.parse(source)
+        } catch (e: ParseException) {
+            e.printStackTrace()
         }
-        return null;
+
+        return null
     }
 }

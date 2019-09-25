@@ -1,53 +1,51 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.DisposableBean
+import org.springframework.context.ApplicationContext
+import org.springframework.context.ApplicationContextAware
 
-public class SpringContextHolder implements ApplicationContextAware, DisposableBean {
-    private static ApplicationContext applicationContext = null;
-    private static Logger logger = LoggerFactory.getLogger(SpringContextHolder.class);
+class SpringContextHolder : ApplicationContextAware, DisposableBean {
 
-    public static ApplicationContext getApplicationContext() {
-        assertContextInjected();
-        return applicationContext;
-    }
-
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        logger.debug("注入ApplicationContext到SpringContextHolder:" + applicationContext);
+    override fun setApplicationContext(applicationContext: ApplicationContext) {
+        logger.debug("注入ApplicationContext到SpringContextHolder:$applicationContext")
         if (SpringContextHolder.applicationContext != null) {
-            logger.warn("SpringContextHolder中的ApplicationContext被覆盖, 原有ApplicationContext为:"
-                    + SpringContextHolder.applicationContext);
+            logger.warn("SpringContextHolder中的ApplicationContext被覆盖, 原有ApplicationContext为:" + SpringContextHolder.applicationContext!!)
         }
-        SpringContextHolder.applicationContext = applicationContext; // NOSONAR
+        SpringContextHolder.applicationContext = applicationContext // NOSONAR
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T> T getBean(String name) {
-        assertContextInjected();
-        return (T) applicationContext.getBean(name);
+    @Throws(Exception::class)
+    override fun destroy() {
+        SpringContextHolder.clear()
     }
 
-    public static <T> T getBean(Class<T> requiredType) {
-        assertContextInjected();
-        return applicationContext.getBean(requiredType);
-    }
+    companion object {
+        private var applicationContext: ApplicationContext? = null
+        private val logger = LoggerFactory.getLogger(SpringContextHolder::class.java)
 
-    public static void clear() {
-        logger.debug("清除SpringContextHolder中的ApplicationContext:" + applicationContext);
-        applicationContext = null;
-    }
-
-    private static void assertContextInjected() {
-        if (applicationContext == null) {
-            throw new IllegalStateException("applicaitonContext未注入,请在applicationContext.xml中定义SpringContextHolder");
+        fun getApplicationContext(): ApplicationContext? {
+            assertContextInjected()
+            return applicationContext
         }
-    }
 
-    @Override
-    public void destroy() throws Exception {
-        SpringContextHolder.clear();
+        fun <T> getBean(name: String): T {
+            assertContextInjected()
+            return applicationContext!!.getBean(name) as T
+        }
+
+        fun <T> getBean(requiredType: Class<T>): T {
+            assertContextInjected()
+            return applicationContext!!.getBean(requiredType)
+        }
+
+        fun clear() {
+            logger.debug("清除SpringContextHolder中的ApplicationContext:" + applicationContext!!)
+            applicationContext = null
+        }
+
+        private fun assertContextInjected() {
+            checkNotNull(applicationContext) { "applicaitonContext未注入,请在applicationContext.xml中定义SpringContextHolder" }
+        }
     }
 }

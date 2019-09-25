@@ -1,28 +1,31 @@
-package com.p2p.lending.util;
+package com.p2p.lending.util.un
 
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.quartz.JobExecutionContext
+import org.quartz.JobExecutionException
+import org.springframework.scheduling.quartz.QuartzJobBean
 
-public class Job1 extends QuartzJobBean {
-    private static int i = 0;
-    private int timeout;
+class Job1 : QuartzJobBean() {
+    private var timeout: Int = 0
 
     //调度工厂实例化后，经过timeout时间开始执行调度
 
-    public void setTimeout(int timeout) {
+    fun setTimeout(timeout: Int) {
 
-        this.timeout = timeout;
+        this.timeout = timeout
 
     }
 
     /**
      * 要调度的具体任务
      */
-    @Override
-    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
+    @Throws(JobExecutionException::class)
+    override fun executeInternal(context: JobExecutionContext) {
         // TODO Auto-generated method stub
-        System.out.println("定时任务执行中…");
+        println("定时任务执行中…")
+    }
+
+    companion object {
+        private val i = 0
     }
 
 }
